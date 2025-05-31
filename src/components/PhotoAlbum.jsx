@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PhotoAlbum.css';
 
 // Elenco statico delle immagini (in ambiente statico React non si può leggere la dir)
@@ -63,16 +63,18 @@ const photoList = [
   "Immagine WhatsApp 2025-05-31 ore 12.40.18_cf98e1f1.jpg"
 ];
 
-const getStorage = () => {
-  try {
-    return JSON.parse(localStorage.getItem('photoAlbumVotes') || '{}');
-  } catch {
-    return {};
-  }
-};
-const setStorage = (data) => {
-  localStorage.setItem('photoAlbumVotes', JSON.stringify(data));
-};
+async function fetchVotes() {
+  const res = await fetch('/.netlify/functions/votes');
+  if (!res.ok) return {};
+  return await res.json();
+}
+async function saveVotes(votes) {
+  await fetch('/.netlify/functions/votes', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(votes),
+  });
+}
 
 function Star({ filled, onClick }) {
   return (
@@ -83,27 +85,39 @@ function Star({ filled, onClick }) {
 }
 
 export default function PhotoAlbum() {
-  const [votes, setVotes] = useState(getStorage());
+  const [votes, setVotes] = useState({});
   const [modal, setModal] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchVotes().then(data => {
+      setVotes(data);
+      setLoading(false);
+    });
+  }, []);
+
+  const updateVotes = (newVotes) => {
+    setVotes(newVotes);
+    saveVotes(newVotes);
+  };
 
   const handleVote = (photo, stars) => {
     const newVotes = { ...votes, [photo]: { ...votes[photo], stars } };
-    setVotes(newVotes);
-    setStorage(newVotes);
+    updateVotes(newVotes);
   };
   const handleCheck = (photo, key, checked) => {
     const newVotes = { ...votes, [photo]: { ...votes[photo], [key]: checked } };
-    setVotes(newVotes);
-    setStorage(newVotes);
+    updateVotes(newVotes);
   };
   const handleComment = (photo, comment) => {
     const newVotes = { ...votes, [photo]: { ...votes[photo], comment } };
-    setVotes(newVotes);
-    setStorage(newVotes);
+    updateVotes(newVotes);
   };
 
   const openModal = (photo) => setModal(photo);
   const closeModal = () => setModal(null);
+
+  if (loading) return <div className="album-outer"><div>Caricamento voti...</div></div>;
 
   return (
     <div className="album-outer">
