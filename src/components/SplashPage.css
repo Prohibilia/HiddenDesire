@@ -1,0 +1,54 @@
+.splash-root {
+  min-height: 100vh;
+  background: #6b2323 url('/images/splash-bg.jpg') repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.9s cubic-bezier(.4,0,.2,1);
+  opacity: 1;
+  z-index: 2;
+}
+.splash-root.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.splash-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.splash-img-wrap {
+  position: relative;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.splash-img {
+  max-width: 340px;
+  width: 90vw;
+  border: 3px solid #d4af37;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px #000a;
+  display: block;
+}
+.splash-payoff {
+  margin-top: 2.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #d4af37;
+  text-align: center;
+  text-shadow: 0 2px 8px #000a;
+}
+.splash-disclaimer {
+  font-size: 0.95rem;
+  color: #fff8;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+} 
