@@ -91,7 +91,17 @@ export default function PhotoAlbum() {
 
   useEffect(() => {
     fetchVotes().then(data => {
-      setVotes(data);
+      // Per ogni foto, assicurati che ci siano tutti i campi
+      const fixedVotes = {};
+      photoList.forEach(photo => {
+        fixedVotes[photo] = {
+          stars: data[photo]?.stars || 0,
+          flaco: !!data[photo]?.flaco,
+          gustaria: !!data[photo]?.gustaria,
+          comment: data[photo]?.comment || ""
+        };
+      });
+      setVotes(fixedVotes);
       setLoading(false);
     });
   }, []);
