@@ -63,6 +63,18 @@ const photoList = [
   "Immagine WhatsApp 2025-05-31 ore 12.40.18_cf98e1f1.jpg"
 ];
 
+const introText = `🌹✨ Adesso ti propongo un gioco intenso: visto che ti sei già confidata con me e senti di voler fare un passo ulteriore nella scoperta dei tuoi angoli segreti – qualcosa che forse finora hai tenuto nascosto per pudore, per timore, o chissà cos'altro!
+
+Qui siamo solo io e te. Io non ti giudico, la sessualità vissuta pienamente è uno dei più bei regali che ci possiamo donare. Conosco quanto il mondo femminile sia ricco, profondo, a volte sorprendentemente audace e altre volte più silenzioso e inespresso.
+
+Il gioco è questo: ti mostrerò alcune immagini. Voglio che a ciascuna foto tu dia un voto da 1 a 5 stelline, in base a quanto ti eccita – 1 stellina se proprio non ti piace o non ti suscita nulla. Se puoi, aggiungi un breve commento quando una foto ti eccita molto o per niente, raccontando cosa ti fa sentire o cosa ti evoca quella foto.
+
+Indica anche se quell'esperienza l'hai già vissuta o se la vorresti provare.
+
+In base alle tue risposte, io delineerò un profilo che – secondo me – ti rappresenta. Naturalmente è solo il mio punto di vista: potrai dirmi cosa ne pensi, correggermi o aggiungere sfumature.
+
+A me servirà per conoscerti meglio, ma spero che questo gioco possa anche aiutarti a scoprire certi angoli di te stessa che forse ancora non conosci. Angoli nascosti nella penombra del pudore… ma qui, in questo spazio, possiamo esplorarli insieme, in libertà e totale sicurezza. 🌹✨`;
+
 async function fetchVotes() {
   const res = await fetch('/.netlify/functions/votes');
   if (!res.ok) return {};
@@ -90,20 +102,24 @@ export default function PhotoAlbum() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchVotes().then(data => {
-      // Per ogni foto, assicurati che ci siano tutti i campi
-      const fixedVotes = {};
-      photoList.forEach(photo => {
-        fixedVotes[photo] = {
-          stars: data[photo]?.stars || 0,
-          flaco: !!data[photo]?.flaco,
-          gustaria: !!data[photo]?.gustaria,
-          comment: data[photo]?.comment || ""
-        };
+    fetchVotes()
+      .then(data => {
+        const fixedVotes = {};
+        photoList.forEach(photo => {
+          fixedVotes[photo] = {
+            stars: data[photo]?.stars || 0,
+            flaco: !!data[photo]?.flaco,
+            gustaria: !!data[photo]?.gustaria,
+            comment: data[photo]?.comment || ""
+          };
+        });
+        setVotes(fixedVotes);
+        setLoading(false);
+      })
+      .catch(err => {
+        setLoading(false);
+        alert('Errore nel caricamento voti: ' + err.message);
       });
-      setVotes(fixedVotes);
-      setLoading(false);
-    });
   }, []);
 
   const updateVotes = (newVotes) => {
@@ -112,16 +128,24 @@ export default function PhotoAlbum() {
   };
 
   const handleVote = (photo, stars) => {
+    console.log(`Voto cambiato per ${photo}: ${stars} stelle`);
     const newVotes = { ...votes, [photo]: { ...votes[photo], stars } };
-    updateVotes(newVotes);
+    setVotes(newVotes);
+    saveVotes(newVotes);
   };
   const handleCheck = (photo, key, checked) => {
+    console.log(`Checkbox cambiata per ${photo}: ${key} = ${checked}`);
     const newVotes = { ...votes, [photo]: { ...votes[photo], [key]: checked } };
-    updateVotes(newVotes);
+    setVotes(newVotes);
+    saveVotes(newVotes);
   };
   const handleComment = (photo, comment) => {
+    console.log(`Commento cambiato per ${photo}: ${comment}`);
     const newVotes = { ...votes, [photo]: { ...votes[photo], comment } };
-    updateVotes(newVotes);
+    setVotes(newVotes);
+  };
+  const handleCommentBlur = (photo) => {
+    saveVotes(votes);
   };
 
   const openModal = (photo) => setModal(photo);
@@ -140,6 +164,7 @@ export default function PhotoAlbum() {
               className="album-photo"
               onClick={() => openModal(photo)}
             />
+            <div className="album-excita-label">Me excita:</div>
             <div className="album-stars">
               {[1,2,3,4,5].map(n => (
                 <Star
@@ -170,6 +195,7 @@ export default function PhotoAlbum() {
               placeholder="O comenta lo que te excita o lo que no te gusta!"
               value={votes[photo]?.comment || ''}
               onChange={e => handleComment(photo, e.target.value)}
+              onBlur={() => handleCommentBlur(photo)}
             />
           </div>
         ))}
@@ -178,6 +204,7 @@ export default function PhotoAlbum() {
         <div className="album-modal-bg" onClick={closeModal}>
           <div className="album-modal" onClick={e => e.stopPropagation()}>
             <img src={`/photos/${modal}`} alt="photo" className="album-modal-photo album-modal-photo-large" />
+            <div className="album-excita-label modal-excita-label">Me excita:</div>
             <div className="album-stars modal-stars">
               {[1,2,3,4,5].map(n => (
                 <Star
@@ -208,6 +235,7 @@ export default function PhotoAlbum() {
               placeholder="O comenta lo que te excita o lo que no te gusta!"
               value={votes[modal]?.comment || ''}
               onChange={e => handleComment(modal, e.target.value)}
+              onBlur={() => handleCommentBlur(modal)}
             />
             <button className="album-modal-close" onClick={closeModal}>×</button>
           </div>
