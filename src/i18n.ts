@@ -25,8 +25,9 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'it',
-    fallbackLng: 'it',
+    lng: 'es',
+    fallbackLng: 'es',
+    detection: { caches: [] },
     interpolation: {
       escapeValue: false
     }

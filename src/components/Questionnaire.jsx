@@ -7,7 +7,7 @@ const questions = [
   {
     section: '1️⃣ Identidad y experiencias previas',
     items: [
-      { type: 'text', label: '¿Cómo describirías tu identidad erótica? (por ejemplo: sumisa, esclava, curiosa, otra).' },
+      { type: 'text', label: '¿Cómo describirías tu identidad erótica? (por ejemplo: para nada sumisa, poco sumisa, muy sumisa, esclava, curiosa, otra).' },
       { type: 'text', label: '¿Has tenido ya experiencias reales de sumisión? Si es así, cuéntanos brevemente las más significativas.' },
       { type: 'stars', label: '¿Qué tan cómoda te sientes al recibir órdenes y ceder el control? (1-5).' },
     ],
