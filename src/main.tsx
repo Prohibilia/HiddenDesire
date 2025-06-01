@@ -7,6 +7,8 @@ import './i18n';
 import '@fontsource/cinzel/400.css';
 import '@fontsource/cinzel/600.css';
 import '@fontsource/cinzel/700.css';
+import i18n from './i18n';
+i18n.changeLanguage('es');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

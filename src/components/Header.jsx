@@ -32,17 +32,6 @@ export default function Header({ onAlbumClick, onQuestionnaireClick }) {
             <button className="header-btn" onClick={() => { setMenuOpen(false); onAlbumClick(); }}>Album</button>
             <button className="header-btn">Profilo</button>
             <button className="header-btn">Logout</button>
-            <div className="header-lang">
-              {LANGS.map(l => (
-                <button
-                  key={l.code}
-                  className={i18n.resolvedLanguage === l.code ? 'active' : ''}
-                  onClick={() => { setMenuOpen(false); i18n.changeLanguage(l.code); }}
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
       )}
