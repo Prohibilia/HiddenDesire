@@ -3,12 +3,14 @@ import Header from './components/Header';
 import SplashPage from './components/SplashPage';
 import ChatPage from './components/ChatPage';
 import PhotoAlbum from './components/PhotoAlbum';
+import Questionnaire from './components/Questionnaire';
 import './App.css';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [showChat, setShowChat] = useState(false);
   const [showAlbum, setShowAlbum] = useState(false);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
 
   const handleUnlock = () => {
     setShowSplash(false);
@@ -19,14 +21,23 @@ function App() {
     setShowAlbum(true);
     setShowSplash(false);
     setShowChat(false);
+    setShowQuestionnaire(false);
+  };
+
+  const handleQuestionnaireClick = () => {
+    setShowQuestionnaire(true);
+    setShowAlbum(false);
+    setShowSplash(false);
+    setShowChat(false);
   };
 
   return (
     <div className="app-root">
-      <Header onAlbumClick={handleAlbumClick} />
+      <Header onAlbumClick={handleAlbumClick} onQuestionnaireClick={handleQuestionnaireClick} />
+      {showQuestionnaire && <Questionnaire />}
       {showAlbum && <PhotoAlbum />}
-      {!showAlbum && showSplash && <SplashPage onUnlock={handleUnlock} />}
-      {!showAlbum && showChat && <div className="fade-in"><ChatPage /></div>}
+      {!showAlbum && !showQuestionnaire && showSplash && <SplashPage onUnlock={handleUnlock} />}
+      {!showAlbum && !showQuestionnaire && showChat && <div className="fade-in"><ChatPage /></div>}
     </div>
   );
 }

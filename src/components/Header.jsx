@@ -9,41 +9,26 @@ const LANGS = [
   { code: 'pt', label: 'PT' },
 ];
 
-export default function Header({ onAlbumClick }) {
+export default function Header({ onAlbumClick, onQuestionnaireClick }) {
   const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="header-root">
-      <div className="header-content">
-        <button className="burger-btn" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+      <div className="header-content refined-header">
+        <button className="burger-btn refined-burger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span className="burger-icon">&#9776;</span>
         </button>
-        <div className="header-title">
-          <span className="header-title-left">{t('title')}</span>
-          <img src="/images/logo.png" alt="logo" className="header-logo" />
-          <span className="header-title-right">{t('title2')}</span>
-        </div>
-        <div className="header-actions desktop-only">
-          <button className="header-btn" onClick={onAlbumClick}>Album</button>
-          <button className="header-btn">Profilo</button>
-          <button className="header-btn">Logout</button>
-          <div className="header-lang">
-            {LANGS.map(l => (
-              <button
-                key={l.code}
-                className={i18n.resolvedLanguage === l.code ? 'active' : ''}
-                onClick={() => i18n.changeLanguage(l.code)}
-              >
-                {l.label}
-              </button>
-            ))}
-          </div>
+        <div className="header-title refined-title">
+          <span className="header-title-left refined-title-part">{t('title')}</span>
+          <img src="/images/logo.png" alt="logo" className="header-logo refined-logo" />
+          <span className="header-title-right refined-title-part">{t('title2')}</span>
         </div>
       </div>
       {menuOpen && (
         <div className="burger-menu" onClick={() => setMenuOpen(false)}>
           <div className="burger-menu-content" onClick={e => e.stopPropagation()}>
+            <button className="header-btn" onClick={() => { setMenuOpen(false); onQuestionnaireClick(); }}>Cuestionario</button>
             <button className="header-btn" onClick={() => { setMenuOpen(false); onAlbumClick(); }}>Album</button>
             <button className="header-btn">Profilo</button>
             <button className="header-btn">Logout</button>

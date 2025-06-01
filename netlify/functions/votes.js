@@ -47,21 +47,29 @@ function updateOnGitHub(content, sha) {
 }
 
 exports.handler = async function(event, context) {
+  console.log('--- Netlify votes.js invoked ---');
+  console.log('HTTP method:', event.httpMethod);
+  console.log('GITHUB_TOKEN present:', !!process.env.GITHUB_TOKEN);
+
   if (event.httpMethod === 'GET') {
     try {
+      console.log('Fetching votes from GitHub...');
       const data = await fetchFromGitHub();
+      console.log('Fetched data:', data.slice(0, 200));
       return {
         statusCode: 200,
         body: data,
         headers: { 'Content-Type': 'application/json' },
       };
     } catch (err) {
+      console.error('GET error:', err);
       return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
     }
   }
 
   if (event.httpMethod === 'POST') {
     try {
+      console.log('POST body:', event.body);
       // Prima otteniamo lo SHA del file corrente
       const shaResponse = await new Promise((resolve, reject) => {
         https.get(GITHUB_API_URL, {
@@ -76,19 +84,21 @@ exports.handler = async function(event, context) {
           res.on('error', reject);
         }).on('error', reject);
       });
-
+      console.log('SHA response:', shaResponse.sha);
       // Poi aggiorniamo il file
-      await updateOnGitHub(event.body, shaResponse.sha);
-      
+      const updateResult = await updateOnGitHub(event.body, shaResponse.sha);
+      console.log('Update result:', updateResult);
       return {
         statusCode: 200,
         body: JSON.stringify({ ok: true }),
         headers: { 'Content-Type': 'application/json' },
       };
     } catch (err) {
+      console.error('POST error:', err);
       return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
     }
   }
 
+  console.log('Method not allowed:', event.httpMethod);
   return { statusCode: 405, body: 'Method Not Allowed' };
 }; 

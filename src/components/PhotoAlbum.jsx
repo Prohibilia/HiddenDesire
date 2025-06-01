@@ -180,7 +180,7 @@ export default function PhotoAlbum() {
                 checked={!!votes[photo]?.flaco}
                 onChange={e => handleCheck(photo, 'flaco', e.target.checked)}
               />
-              Flaco ya lo hace igual
+              El ya lo hace igual
             </label>
             <label className="album-check">
               <input
