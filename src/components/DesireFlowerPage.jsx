@@ -60,6 +60,20 @@ export default function DesireFlowerPage() {
   const d = circles[selected];
   const payoffVars = computePayoffVars(localValues, t);
 
+  // Quando si cambia card, se il valore non è mai stato impostato, parte da 0 (solo in modalità card)
+  useEffect(() => {
+    if (showCardUI) {
+      setLocalValues(vals => {
+        if (typeof vals[selected] === 'undefined') {
+          const newVals = [...vals];
+          newVals[selected] = 0;
+          return newVals;
+        }
+        return vals;
+      });
+    }
+  }, [selected, showCardUI]);
+
   // CARD UI (mobile/compact)
   if (showCardUI) {
     // Seleziona il valore corrente o 0 se non ancora impostato
@@ -71,18 +85,6 @@ export default function DesireFlowerPage() {
     const b = Math.round(213 + (30-213)*intensity); // da 213 (d5) a 30 (1e)
     const bgColor = `rgb(${r},${g},${b})`;
     
-    // Quando si cambia card, se il valore non è mai stato impostato, parte da 0
-    useEffect(() => {
-      setLocalValues(vals => {
-        if (typeof vals[selected] === 'undefined') {
-          const newVals = [...vals];
-          newVals[selected] = 0;
-          return newVals;
-        }
-        return vals;
-      });
-    }, [selected]);
-
     return (
       <div className="desire-flower-page-outer">
         <div className="desire-flower-page-header" style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
