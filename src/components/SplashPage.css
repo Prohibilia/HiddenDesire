@@ -22,7 +22,7 @@
 }
 .splash-img-wrap {
   position: relative;
-  margin-top: 2.5rem;
+  margin-top: 1.1rem;
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -51,4 +51,24 @@
   margin-bottom: 1.2rem;
   text-align: center;
   font-family: 'Cinzel', serif;
+}
+.splash-slogan {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.375rem;
+  color: #ffd77a;
+  text-align: center;
+  max-width: 700px;
+  margin: 2.2rem auto 1.1rem auto;
+  font-style: italic;
+  text-shadow: 0 0 12px #ffd77a55, 0 2px 8px #000;
+}
+@media (max-width: 600px) {
+  .splash-slogan {
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.7rem;
+  }
+  .splash-img-wrap {
+    margin-top: 0.7rem;
+  }
 } 
