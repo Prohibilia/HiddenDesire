@@ -54,6 +54,27 @@ export default function DesireFlowerPage() {
 
   // CARD UI (mobile/compact)
   if (showCardUI) {
+    // Seleziona il valore corrente o 0 se non ancora impostato
+    const sliderValue = localValues[selected] ?? 0;
+    // Calcola il colore dinamico: da blu intenso (#3a7bd5) a vinaccia scuro (#8b1e1e)
+    const intensity = sliderValue / 100;
+    const r = Math.round(58 + (139-58)*intensity); // da 58 (3a) a 139 (8b)
+    const g = Math.round(123 + (30-123)*intensity); // da 123 (7b) a 30 (1e)
+    const b = Math.round(213 + (30-213)*intensity); // da 213 (d5) a 30 (1e)
+    const bgColor = `rgb(${r},${g},${b})`;
+    
+    // Quando si cambia card, se il valore non è mai stato impostato, parte da 0
+    useEffect(() => {
+      setLocalValues(vals => {
+        if (typeof vals[selected] === 'undefined') {
+          const newVals = [...vals];
+          newVals[selected] = 0;
+          return newVals;
+        }
+        return vals;
+      });
+    }, [selected]);
+
     return (
       <div className="desire-flower-page-outer">
         <div className="desire-flower-page-header" style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
@@ -90,7 +111,7 @@ export default function DesireFlowerPage() {
             width: '98vw',
             maxWidth: 420,
             margin: '0 auto',
-            background: `linear-gradient(120deg, #3a7bd5 0%, #8b1e1e ${localValues[selected]}%)`,
+            background: bgColor,
             borderRadius: 22,
             border: '2.5px solid #d4af37',
             boxShadow: '0 2px 18px #000a',
@@ -105,14 +126,14 @@ export default function DesireFlowerPage() {
             <div className="desire-flower-card-caption">{d.caption}</div>
             <div className="desire-flower-card-subtitle">{captions[selected]}</div>
             <div className="desire-slider-labels" style={{marginBottom: '0.5rem', width: '100%'}}>
-              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, 1 - localValues[selected] / 100)})`}}>{d.emojiMin} {d.min}</span>
-              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, localValues[selected] / 100)})`}}>{d.max} {d.emojiMax}</span>
+              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, 1 - sliderValue / 100)})`}}>{d.emojiMin} {d.min}</span>
+              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, sliderValue / 100)})`}}>{d.max} {d.emojiMax}</span>
             </div>
             <input
               type="range"
               min="0"
               max="100"
-              value={localValues[selected]}
+              value={sliderValue}
               onChange={e => handleSliderChange(e.target.value)}
               style={{width: '90%', marginTop: '0.7rem', height: '3px', background: 'linear-gradient(90deg, #ffe08a 0%, #d4af37 100%)', borderRadius: '2px'}}
             />
