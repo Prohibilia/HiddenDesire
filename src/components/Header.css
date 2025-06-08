@@ -3,8 +3,9 @@
 
 .header-root {
   background: rgba(10, 10, 10, 0.98);
-  padding-top: 3.5rem;
-  padding-bottom: 1.5rem;
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
   box-shadow: 0 2px 18px #000a;
   width: 100vw;
   position: relative;
@@ -194,7 +195,7 @@
   text-shadow: 0 0 18px #ffd77a99, 0 2px 18px #000;
   margin: 0;
   line-height: 1;
-  height: 5.5rem;
+  height: 4.5rem;
 }
 .refined-title-part {
   font-family: 'Great Vibes', 'Playfair Display', serif !important;
