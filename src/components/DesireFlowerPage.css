@@ -2,12 +2,12 @@
   --header-height: 64px;
 }
 .desire-flower-page-outer {
-  position: absolute;
-  z-index: 2000;
-  top: var(--header-height, 64px);
-  left: 0;
-  right: 0;
-  bottom: 0;
+  /* position: absolute; */
+  /* z-index: 2000; */
+  /* top: var(--header-height, 64px); */
+  /* left: 0; */
+  /* right: 0; */
+  /* bottom: 0; */
   width: 100vw;
   background: rgba(24, 19, 19, 0.85) !important;
   display: flex;

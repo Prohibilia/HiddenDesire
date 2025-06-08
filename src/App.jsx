@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import SplashPage from './components/SplashPage';
 import ChatPage from './components/ChatPage';
@@ -8,13 +9,13 @@ import DesireFlowerPage from './components/DesireFlowerPage';
 import { DesireProvider } from './components/DesireContext';
 import './App.css';
 
-function App() {
+function AppRoutes() {
   const [showSplash, setShowSplash] = useState(true);
   const [showChat, setShowChat] = useState(false);
   const [showAlbum, setShowAlbum] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
-  const [showDesireFlowerPage, setShowDesireFlowerPage] = useState(false);
   const [desireValues, setDesireValues] = useState(Array(7).fill(50));
+  const navigate = useNavigate();
 
   const handleUnlock = () => {
     setShowSplash(false);
@@ -35,18 +36,34 @@ function App() {
     setShowChat(false);
   };
 
+  const handleOpenDesireFlower = () => {
+    navigate('/desire-flower');
+  };
+
+  return (
+    <div className="app-root">
+      <Header onAlbumClick={handleAlbumClick} onQuestionnaireClick={handleQuestionnaireClick} onOpenDesireFlower={handleOpenDesireFlower} />
+      <Routes>
+        <Route path="/desire-flower" element={<DesireFlowerPage />} />
+        <Route path="/album" element={<PhotoAlbum />} />
+        <Route path="/questionnaire" element={<Questionnaire />} />
+        <Route path="/" element={
+          <>
+            {showSplash && <SplashPage onUnlock={handleUnlock} />}
+            {showChat && <div className="fade-in"><ChatPage /></div>}
+          </>
+        } />
+      </Routes>
+    </div>
+  );
+}
+
+function App() {
   return (
     <DesireProvider>
-      <div className="app-root">
-        <Header onAlbumClick={handleAlbumClick} onQuestionnaireClick={handleQuestionnaireClick} onOpenDesireFlower={() => setShowDesireFlowerPage(true)} />
-        {showDesireFlowerPage && (
-          <DesireFlowerPage onClose={() => setShowDesireFlowerPage(false)} values={desireValues} setValues={setDesireValues} />
-        )}
-        {showQuestionnaire && <Questionnaire />}
-        {showAlbum && <PhotoAlbum />}
-        {!showAlbum && !showQuestionnaire && showSplash && <SplashPage onUnlock={handleUnlock} />}
-        {!showAlbum && !showQuestionnaire && showChat && <div className="fade-in"><ChatPage /></div>}
-      </div>
+      <Router>
+        <AppRoutes />
+      </Router>
     </DesireProvider>
   );
 }
