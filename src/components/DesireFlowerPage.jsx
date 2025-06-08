@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import DesireFlowerPopup from './DesireFlowerPopup';
+import DesireFlowerPopup from './DesireFlowerPopup.jsx';
 import './DesireFlowerPage.css';
 import { useDesire } from './DesireContext';
 
