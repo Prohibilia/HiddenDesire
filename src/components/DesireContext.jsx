@@ -8,7 +8,7 @@ function synthesizeDesire(values) {
   const linguaggio = values[2] > 60 ? 'con un linguaggio forte' : 'poetico';
   const guida = values[5] > 60 ? 'dovrai obbedire' : 'mi guiderai tu';
   const regno = values[6] > 60 ? 'fantasia' : 'realtà';
-  let frase = `Sarò il tuo ${ruolo} ${tono}, ${linguaggio}, ${guida}, giocheremo nel regno della ${regno}. Ma posso diventare ciò che vuoi. Lo decidi tu scegliendo sotto le 7 dimensioni del tuo desiderio!`;
+  let frase = `Sarò il tuo ${ruolo} ${tono}, ${linguaggio}, ${guida}, giocheremo nel regno della ${regno}. Ma posso diventare ciò che vuoi. XXXXXXXXDecidi tu scegliendo sotto le 7 dimensioni del tuo desiderio!`;
   frase = frase.charAt(0).toUpperCase() + frase.slice(1);
   return frase;
 }

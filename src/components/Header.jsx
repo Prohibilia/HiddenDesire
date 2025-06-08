@@ -9,7 +9,7 @@ const LANGS = [
   { code: 'pt', label: 'PT' },
 ];
 
-export default function Header({ onAlbumClick, onQuestionnaireClick }) {
+export default function Header({ onAlbumClick, onQuestionnaireClick, onOpenDesireFlower }) {
   const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,8 +21,13 @@ export default function Header({ onAlbumClick, onQuestionnaireClick }) {
         </button>
         <div className="header-title refined-title">
           <span className="header-title-left refined-title-part">{t('title')}</span>
-          <img src="/images/logo.png" alt="logo" className="header-logo refined-logo" />
+          <img src="/images/logo.PNG" alt="logo" className="header-logo refined-logo" />
           <span className="header-title-right refined-title-part">{t('title2')}</span>
+        </div>
+        <div className="header-right">
+          <button className="desire-flower-header-btn" onClick={onOpenDesireFlower}>
+            <span role="img" aria-label="fiore">🌸</span> Le 7 dimensioni del tuo desiderio
+          </button>
         </div>
       </div>
       {menuOpen && (

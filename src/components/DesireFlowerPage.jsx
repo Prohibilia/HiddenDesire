@@ -26,7 +26,7 @@ function synthesizeDesire(values) {
   const regno = values[6] > 60 ? 'fantasia' : 'realtà';
 
   // Costruzione frase
-  let frase = `Sarò il tuo ${ruolo} ${tono}, ${linguaggio}, ${guida}, giocheremo nel regno della ${regno}. Ma posso diventare ciò che vuoi. Lo decidi tu scegliendo sotto le 7 dimensioni del tuo desiderio!`;
+  let frase = `Sarò il tuo ${ruolo} ${tono}, ${linguaggio}, ${guida}, giocheremo nel regno della ${regno}. Ma posso diventare ciò che vuoi. XXXXXXXXLo decidi tu scegliendo sotto le 7 dimensioni del tuo desiderio!`;
   // Iniziale maiuscola
   frase = frase.charAt(0).toUpperCase() + frase.slice(1);
   return frase;

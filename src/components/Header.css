@@ -27,17 +27,23 @@
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  font-family: 'Playfair Display', 'Cinzel', serif !important;
-  font-size: 2.3rem;
-  color: #d4af37;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-shadow: 0 2px 8px #000a;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 2.5rem;
+  color: #ffd77a;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 18px #ffd77a99, 0 2px 18px #000;
   white-space: nowrap;
 }
 .header-title-left, .header-title-right {
   display: inline-block;
-  font-family: 'Cinzel', serif !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 500;
+  font-style: italic;
+  color: #ffd77a;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 18px #ffd77a99, 0 2px 18px #000;
 }
 .header-logo {
   height: 2.5rem;
@@ -177,18 +183,22 @@
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  font-family: 'Playfair Display', 'Cinzel', serif !important;
-  font-size: 1.65rem;
-  color: #d4af37;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-shadow: 0 2px 8px #000a;
+  font-family: 'Playfair Display', serif !important;
+  font-size: 2.5rem;
+  color: #ffd77a;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 18px #ffd77a99, 0 2px 18px #000;
   white-space: nowrap;
 }
 .refined-title-part {
-  font-family: 'Cinzel', serif !important;
-  font-size: 1.1em;
-  letter-spacing: 0.08em;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 500;
+  font-style: italic;
+  color: #ffd77a;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 18px #ffd77a99, 0 2px 18px #000;
 }
 .refined-logo {
   height: 1.7rem;
@@ -223,4 +233,31 @@
   .refined-logo {
     height: 0.9rem;
   }
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.desire-flower-header-btn {
+  background: #111;
+  color: #e6c97a;
+  border: 1.5px solid #e6c97a;
+  border-radius: 1.5em;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  padding: 0.45em 1.3em;
+  margin-right: 1.2em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(230,201,122,0.07);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.desire-flower-header-btn:hover {
+  background: #222;
+  color: #fffbe6;
+  border-color: #ffe08a;
 } 
