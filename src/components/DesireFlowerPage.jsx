@@ -17,6 +17,7 @@ export default function DesireFlowerPage() {
   const { desireValues, setDesireValues } = useDesire();
   const [localValues, setLocalValues] = useState(desireValues);
   const [selected, setSelected] = useState(0);
+  const [showCardUI, setShowCardUI] = useState(window.innerWidth <= 700); // mobile by default
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -25,6 +26,14 @@ export default function DesireFlowerPage() {
 
   // Prendi i dati dei cerchi dalla traduzione
   const circles = t('desireFlower.circles', { returnObjects: true });
+  const captions = t('desireFlower.captions', { returnObjects: true });
+
+  // Responsive: switch UI if window resizes
+  useEffect(() => {
+    const handleResize = () => setShowCardUI(window.innerWidth <= 700);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSliderChange = (value) => {
     const newValues = [...localValues];
@@ -43,6 +52,97 @@ export default function DesireFlowerPage() {
   const d = circles[selected];
   const payoffVars = computePayoffVars(localValues, t);
 
+  // CARD UI (mobile/compact)
+  if (showCardUI) {
+    return (
+      <div className="desire-flower-page-outer">
+        <div className="desire-flower-page-header" style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+          <h1 className="desire-flower-page-title" style={{
+            fontFamily: 'Great Vibes, cursive',
+            fontSize: '2.2rem',
+            color: '#ffe08a',
+            fontWeight: 600,
+            letterSpacing: '0.01em',
+            textShadow: '0 0 18px #e6c97a99, 0 2px 18px #000',
+            textAlign: 'center',
+            margin: '0 auto 0.2rem auto',
+            background: 'none',
+            padding: 0,
+            border: 'none',
+            boxShadow: 'none',
+          }}>{t('desireFlower.title')}</h1>
+          <div style={{
+            fontFamily: 'Great Vibes, cursive',
+            fontSize: '1.3rem',
+            color: '#ffe7a1',
+            fontWeight: 400,
+            fontStyle: 'italic',
+            textAlign: 'center',
+            marginTop: '0.1rem',
+            marginBottom: '1.2rem',
+            letterSpacing: '0.01em',
+            textShadow: '0 0 8px #e6c97a55, 0 2px 8px #000',
+          }}>{t('desireFlower.tempTitle')}</div>
+        </div>
+        <div className="desire-flower-page-content">
+          <div className="desire-flower-sintesi-elegant" style={{marginBottom: '1.2rem', position: 'sticky', top: 0, zIndex: 10}}>{t('desireFlower.payoff', payoffVars)}</div>
+          <div className="desire-flower-card" style={{
+            width: '98vw',
+            maxWidth: 420,
+            margin: '0 auto',
+            background: `linear-gradient(120deg, #3a7bd5 0%, #8b1e1e ${localValues[selected]}%)`,
+            borderRadius: 22,
+            border: '2.5px solid #d4af37',
+            boxShadow: '0 2px 18px #000a',
+            padding: '1.2rem 1.1rem 1.7rem 1.1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: '1.2rem',
+            position: 'relative',
+            minHeight: 220
+          }}>
+            <div className="desire-flower-card-caption">{d.caption}</div>
+            <div className="desire-flower-card-subtitle">{captions[selected]}</div>
+            <div className="desire-slider-labels" style={{marginBottom: '0.5rem', width: '100%'}}>
+              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, 1 - localValues[selected] / 100)})`}}>{d.emojiMin} {d.min}</span>
+              <span style={{color: `rgba(212, 175, 55, ${Math.max(0.4, localValues[selected] / 100)})`}}>{d.max} {d.emojiMax}</span>
+            </div>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={localValues[selected]}
+              onChange={e => handleSliderChange(e.target.value)}
+              style={{width: '90%', marginTop: '0.7rem', height: '3px', background: 'linear-gradient(90deg, #ffe08a 0%, #d4af37 100%)', borderRadius: '2px'}}
+            />
+            {getSelectedLabel(selected) && (
+              <div className="desire-circle-selected-label" style={{marginTop: '0.7rem'}}>{getSelectedLabel(selected)}</div>
+            )}
+            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '1.2rem'}}>
+              <button
+                className="desire-flower-nav-button"
+                disabled={selected === 0}
+                onClick={() => setSelected(selected - 1)}
+              >←</button>
+              <button
+                className="desire-flower-nav-button"
+                disabled={selected === circles.length - 1}
+                onClick={() => setSelected(selected + 1)}
+              >→</button>
+            </div>
+          </div>
+          <div style={{width: '100%', textAlign: 'center', marginTop: '0.7rem'}}>
+            <button className="desire-flower-nav-button" onClick={() => setShowCardUI(false)}>
+              {t('desireFlower.showFlower')}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // LOGICA FIORE (desktop or if showCardUI == false)
   return (
     <div className="desire-flower-page-outer">
       <div className="desire-flower-page-header" style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
@@ -136,6 +236,11 @@ export default function DesireFlowerPage() {
               style={{width: '60%', marginTop: '1.2rem', height: '3px', background: 'linear-gradient(90deg, #ffe08a 0%, #d4af37 100%)', borderRadius: '2px'}}
             />
           </div>
+        </div>
+        <div style={{width: '100%', textAlign: 'center', marginTop: '0.7rem'}}>
+          <button className="desire-flower-button" style={{fontSize: '1.1rem', padding: '0.5em 1.2em', borderRadius: 14}} onClick={() => setShowCardUI(true)}>
+            {t('desireFlower.showCards', 'Mostra card')}
+          </button>
         </div>
       </div>
     </div>

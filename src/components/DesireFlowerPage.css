@@ -354,4 +354,116 @@
   .desire-slider-labels {
     font-size: 0.7rem !important;
   }
+}
+
+/* Card UI Styles */
+.desire-flower-card {
+  animation: cardFadeIn 0.4s ease-out;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.desire-flower-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px #000d;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.desire-flower-card-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.desire-flower-card-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.desire-flower-card-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.desire-flower-card-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Card Navigation Buttons */
+.desire-flower-nav-button {
+  background: linear-gradient(135deg, #d4af37 0%, #e63946 100%);
+  color: #181313;
+  border: none;
+  border-radius: 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #000a;
+  transition: all 0.2s ease;
+}
+
+.desire-flower-nav-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px #000d;
+}
+
+.desire-flower-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Card Content Styles */
+.desire-flower-card-caption {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.1rem;
+  color: #ffe08a;
+  text-align: center;
+  margin-bottom: 0;
+  text-shadow: 0 0 8px #e6c97a55, 0 2px 8px #000;
+}
+
+.desire-flower-card-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.01rem;
+  color: #ffe7a1;
+  text-align: center;
+  margin-bottom: 0.7rem;
+  margin-top: 0.2rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 6px #e6c97a33, 0 2px 6px #000;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .desire-flower-card {
+    width: 94vw !important;
+    padding: 1rem 0.9rem 1.5rem 0.9rem !important;
+  }
+  
+  .desire-flower-card-caption {
+    font-size: 1.8rem !important;
+  }
+  
+  .desire-flower-card-subtitle {
+    font-size: 0.9rem !important;
+  }
+  
+  .desire-flower-nav-button {
+    font-size: 1rem !important;
+    padding: 0.4rem 1rem !important;
+  }
 } 

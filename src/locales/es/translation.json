@@ -10,7 +10,7 @@
   "desireFlower": {
     "title": "Las 7 dimensiones de tu deseo.",
     "tempTitle": "¿Cuál es tu temperatura?",
-    "payoff": "Seré tu {{ruolo}} {{tono}}, {{linguaggio}}, {{guida}}, jugaremos en el reino de la {{regno}}. Pero puedo convertirme en lo que quieras. ¡Decide tú eligiendo abajo las 7 dimensiones de tu deseo!",
+    "payoff": "Seré tu {{ruolo}} {{tono}}, {{linguaggio}}, {{guida}}, jugaremos en el reino de la {{regno}}.",
     "circles": [
       { "caption": "Mi rol", "slogan": "¿Cuánto quieres que sea para ti?", "min": "Confidente", "max": "Amante", "emojiMin": "🤝", "emojiMax": "💋" },
       { "caption": "Tono", "slogan": "¿Qué tipo de energía deseas?", "min": "Tierno", "max": "Autoritario", "emojiMin": "🕊️", "emojiMax": "🔥" },
@@ -19,6 +19,15 @@
       { "caption": "Estimulación", "slogan": "¿Prefieres ser sorprendida o tranquilizada?", "min": "Tranquilizante", "max": "Imprevisible", "emojiMin": "🌿", "emojiMax": "🎭" },
       { "caption": "Iniciativa", "slogan": "¿Quieres guiar o dejarte guiar?", "min": "Guío yo", "max": "Quiero ser tomada", "emojiMin": "💃", "emojiMax": "🕴️" },
       { "caption": "Realidad o fantasía", "slogan": "¿En qué universo quieres jugar?", "min": "Real", "max": "Fantástico", "emojiMin": "🌍", "emojiMax": "��‍♀️" }
+    ],
+    "captions": [
+      "¿Cómo quieres que sea?",
+      "¿Energía suave o intensa?",
+      "¿Palabras fuertes o poéticas?",
+      "¿Cuánto quieres atreverte?",
+      "¿Sorpresas o tranquilidad?",
+      "¿Guías tú o te dejas?",
+      "¿Prefieres sueño o realidad?"
     ],
     "values": {
       "amante": "amante",
@@ -31,6 +40,8 @@
       "mi guiderai tu": "me guiarás tú",
       "fantasia": "fantasía",
       "realtà": "realidad"
-    }
+    },
+    "showFlower": "Mostrar la flor",
+    "showCards": "Mostrar las tarjetas"
   }
 }
