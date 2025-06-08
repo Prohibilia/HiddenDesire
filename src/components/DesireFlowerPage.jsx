@@ -49,6 +49,14 @@ export default function DesireFlowerPage() {
     return '';
   }
 
+  // Funzione per etichetta slider
+  function getSliderLabel(idx) {
+    const v = localValues[idx] ?? 0;
+    if (v <= 33) return `Molto ${circles[idx].min}`;
+    if (v >= 67) return `Molto ${circles[idx].max}`;
+    return 'Neutro';
+  }
+
   const d = circles[selected];
   const payoffVars = computePayoffVars(localValues, t);
 
@@ -137,9 +145,7 @@ export default function DesireFlowerPage() {
               onChange={e => handleSliderChange(e.target.value)}
               style={{width: '90%', marginTop: '0.7rem', height: '3px', background: 'linear-gradient(90deg, #ffe08a 0%, #d4af37 100%)', borderRadius: '2px'}}
             />
-            {getSelectedLabel(selected) && (
-              <div className="desire-circle-selected-label" style={{marginTop: '0.7rem'}}>{getSelectedLabel(selected)}</div>
-            )}
+            <div className="desire-circle-selected-label" style={{marginTop: '0.7rem'}}>{getSliderLabel(selected)}</div>
             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '1.2rem'}}>
               <button
                 className="desire-flower-nav-button"
