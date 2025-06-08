@@ -1,0 +1,496 @@
+.desire-popup-root {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+.desire-flower {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  height: 360px;
+  background: rgba(24, 19, 19, 0.98);
+  border-radius: 50%;
+  box-shadow: 0 8px 48px #000a, 0 0 0 2px #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  pointer-events: all;
+  animation: flowerIn 0.5s cubic-bezier(.7,-0.2,.5,1.4);
+}
+@keyframes flowerIn {
+  from { transform: translate(-50%,-50%) scale(0.7); opacity: 0; }
+  to   { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+}
+.desire-petal {
+  position: absolute;
+  width: 90px;
+  height: 60px;
+  background: linear-gradient(135deg, #d4af37 0%, #a67c2e 100%);
+  border-radius: 50% 50% 60% 60% / 60% 60% 100% 100%;
+  box-shadow: 0 2px 12px #0007;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #181313;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+  border: 2px solid #fff2;
+}
+.desire-petal.selected {
+  background: linear-gradient(135deg, #e63946 0%, #d4af37 100%);
+  color: #fff;
+  box-shadow: 0 4px 24px #e6394680, 0 0 0 2px #fff8;
+  z-index: 2;
+}
+.desire-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 170px;
+  height: 170px;
+  background: #181313;
+  border-radius: 50%;
+  box-shadow: 0 2px 16px #000a;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2rem 0.7rem 0.7rem 0.7rem;
+}
+.desire-slogan {
+  color: #d4af37;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  font-family: 'Cinzel', serif;
+}
+.desire-slider-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.desire-slider-label {
+  color: #d4af37;
+  font-size: 0.95rem;
+  width: 38px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+.desire-slider {
+  flex: 1;
+  margin: 0 0.5rem;
+  accent-color: #e63946;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d4af37 0%, #e63946 100%);
+  outline: none;
+  box-shadow: 0 1px 6px #000a;
+}
+.desire-slider-thumb {
+  position: absolute;
+  top: 38px;
+  pointer-events: none;
+  z-index: 2;
+}
+.desire-heart {
+  font-size: 2.1rem;
+  filter: drop-shadow(0 2px 8px #e6394680);
+}
+.desire-close-btn {
+  margin-top: 0.7rem;
+  background: linear-gradient(90deg, #d4af37 0%, #e63946 100%);
+  color: #181313;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #000a;
+  transition: background 0.2s, color 0.2s;
+}
+.desire-summary {
+  font-size: 1.1rem;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 80px;
+  transition: color 0.5s;
+}
+.desire-flame {
+  font-size: 2.2rem;
+  margin-top: 0.3rem;
+  transition: color 0.5s;
+}
+.desire-flower-inline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+  z-index: 100;
+}
+.desire-flower-expanded {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  margin: 0 auto 2.5rem auto;
+  background: rgba(24, 19, 19, 0.98);
+  border-radius: 50%;
+  box-shadow: 0 8px 48px #000a, 0 0 0 2px #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  animation: flowerIn 0.5s cubic-bezier(.7,-0.2,.5,1.4);
+}
+.desire-x-btn {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: none;
+  color: #d4af37;
+  border: none;
+  font-size: 2.1rem;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.desire-x-btn:hover {
+  color: #e63946;
+}
+.desire-petal-svg {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.desire-petal-svg.selected {
+  filter: drop-shadow(0 0 12px #e6394680);
+  z-index: 2;
+}
+.desire-center-expanded {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 230px;
+  height: 230px;
+  background: #181313;
+  border-radius: 50%;
+  box-shadow: 0 2px 16px #000a;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2rem 0.7rem 0.7rem 0.7rem;
+}
+.desire-slogan {
+  color: #d4af37;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  font-family: 'Cinzel', serif;
+}
+.desire-slider-row-expanded {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  position: relative;
+  justify-content: space-between;
+}
+.desire-slider-label {
+  color: #d4af37;
+  font-size: 0.95rem;
+  width: 60px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  white-space: nowrap;
+}
+.desire-slider-heart {
+  flex: 1;
+  margin: 0.1rem 0.2rem 0.2rem 0.2rem;
+  accent-color: #e63946;
+  height: 4px;
+  border-radius: 2px;
+  /* background: linear-gradient(90deg, #d4af37 0%, #e63946 100%); */
+  /* background: none; */
+  background: #222; /* oppure transparent */
+  outline: none;
+  box-shadow: 0 1px 6px #000a;
+  appearance: none;
+  position: relative;
+  z-index: 2;
+}
+.desire-slider-heart::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background: #e63946;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #e6394680;
+  position: relative;
+}
+.desire-slider-heart::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: #e63946;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #e6394680;
+  position: relative;
+}
+.desire-slider-heart::-ms-thumb {
+  width: 24px;
+  height: 24px;
+  background: #e63946;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #e6394680;
+  position: relative;
+}
+.desire-slider-heart::-webkit-slider-thumb:after,
+.desire-slider-heart::-moz-range-thumb:after,
+.desire-slider-heart::-ms-thumb:after {
+  content: none !important;
+  display: none !important;
+}
+.desire-close-btn {
+  margin-top: 0.7rem;
+  background: linear-gradient(90deg, #d4af37 0%, #e63946 100%);
+  color: #181313;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #000a;
+  transition: background 0.2s, color 0.2s;
+}
+.desire-summary {
+  font-size: 1.1rem;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 80px;
+  transition: color 0.5s;
+}
+.desire-flame {
+  font-size: 2.2rem;
+  margin-top: 0.3rem;
+  transition: color 0.5s;
+}
+.desire-flower-compact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 1.2rem 0;
+  position: relative;
+  z-index: 100;
+}
+.desire-flower-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: #d4af37;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin-bottom: 0.7rem;
+  margin-top: 0.2rem;
+  position: relative;
+}
+.desire-x-btn {
+  position: absolute;
+  top: 0.1rem;
+  right: -2.2rem;
+  background: none;
+  color: #d4af37;
+  border: none;
+  font-size: 1.5rem;
+  font-family: 'Cinzel', serif;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.desire-x-btn:hover {
+  color: #e63946;
+}
+.desire-flower-circles {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
+.desire-circle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.2px solid #ffd77a;
+  background: #2a2417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.98rem;
+  color: #ffd77a;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: capitalize;
+  text-align: center;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 12px #bfa14a33;
+  padding: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+.desire-circle.selected {
+  border: 2.2px solid #ffd77a;
+  color: #ffd77a;
+  box-shadow: 0 0 16px #ffd77a55;
+  z-index: 2;
+}
+.desire-flower-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 350px;
+  height: 200px;
+  /* background: #181313 !important; */
+  /* border-radius: 50%; */
+  /* box-shadow: 0 2px 16px #000a; */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0.7rem 0.3rem 0.3rem 0.3rem;
+  overflow: visible;
+}
+.desire-slogan {
+  color: #d4af37;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+}
+.desire-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.92rem;
+  color: #d4af37;
+  margin-bottom: 0.2rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+}
+.desire-slider-heart {
+  flex: 1;
+  margin: 0.1rem 0.2rem 0.2rem 0.2rem;
+  accent-color: #e63946;
+  height: 4px;
+  border-radius: 2px;
+  /* background: linear-gradient(90deg, #d4af37 0%, #e63946 100%); */
+  /* background: none; */
+  background: #222; /* oppure transparent */
+  outline: none;
+  box-shadow: 0 1px 6px #000a;
+  appearance: none;
+  position: relative;
+  z-index: 2;
+}
+.desire-slider-heart::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  position: relative;
+}
+.desire-slider-heart::-webkit-slider-thumb:after {
+  content: '❤️';
+  font-size: 1.7rem;
+  display: block;
+  position: absolute;
+  left: 0; top: 0;
+  filter: drop-shadow(0 2px 8px #e6394680);
+}
+.desire-slider-heart::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  position: relative;
+}
+.desire-slider-heart::-moz-range-thumb:after {
+  content: '❤️';
+  font-size: 1.7rem;
+  display: block;
+  position: absolute;
+  left: 0; top: 0;
+  filter: drop-shadow(0 2px 8px #e6394680);
+}
+.desire-slider-heart::-ms-thumb {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  position: relative;
+}
+.desire-slider-heart::-ms-thumb:after {
+  content: '❤️';
+  font-size: 1.7rem;
+  display: block;
+  position: absolute;
+  left: 0; top: 0;
+  filter: drop-shadow(0 2px 8px #e6394680);
+}
+.desire-circle-selected-label {
+  font-size: 0.92rem;
+  font-family: 'Playfair Display', serif;
+  color: #ffd77a;
+  margin-top: 0.18em;
+  text-align: center;
+  display: block;
+  font-style: italic;
+  text-shadow: 0 0 6px #e6c97a55, 0 1px 4px #000;
+}
+.desire-flower-arch-svg {
+  z-index: 0;
+}
+.desire-flower-arch-svg circle {
+  stroke: #ffd77a;
+} 

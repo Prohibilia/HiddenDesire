@@ -1,0 +1,97 @@
+:root {
+  --header-height: 64px;
+}
+.desire-flower-page-outer {
+  position: absolute;
+  z-index: 2000;
+  top: var(--header-height, 64px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background: rgba(24, 19, 19, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  animation: fadeIn 0.3s;
+  padding-top: 3.5rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.desire-flower-page-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 2.5rem 1.2rem 2.5rem;
+  position: relative;
+}
+.desire-flower-page-title {
+  color: #ffe08a;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 18px #e6c97a99, 0 2px 18px #000;
+  text-align: center;
+  margin: 0 auto 2.2rem auto;
+  display: block;
+}
+.desire-flower-page-close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.2rem;
+  background: none;
+  border: none;
+  color: #ffe08a;
+  font-size: 2.2rem;
+  font-family: 'Playfair Display', serif;
+  cursor: pointer;
+  padding: 0.1em 0.5em;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.desire-flower-page-close:hover {
+  background: #222;
+  color: #fffbe6;
+}
+.desire-flower-page-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.desire-flower-page-title-light {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #ffe7a1;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 18px #e6c97a99, 0 2px 18px #000;
+  margin-bottom: 0.2rem;
+}
+.desire-flower-sintesi-elegant {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #ffe7a1;
+  font-size: 1.18rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  margin: 0.1rem auto 2.2rem auto;
+  max-width: 700px;
+  background: rgba(28,24,16,0.92);
+  border: 1.5px solid #bfa14a;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #0007;
+  padding: 1.1rem 2rem;
+  text-shadow: 0 0 8px #e6c97a33, 0 2px 8px #000;
+  display: inline-block;
+} 
