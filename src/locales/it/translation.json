@@ -1,0 +1,36 @@
+{
+  "title": "Desiderio",
+  "title2": "Occulto",
+  "payoff": "Cosa si cela dietro la tua porta segreta?",
+  "disclaimer": "© 2025 Tutti i diritti riservati. Proprietà riservata.",
+  "chat": "Chat",
+  "chat_welcome_title": "Benvenuta...",
+  "chat_welcome_body": "Questa è una conversazione solo tra te e me, in uno spazio segreto e protetto. Qui puoi parlare di tutto, senza paure: io non giudico, sono pronto ad ascoltare ogni sfumatura del tuo desiderio e ogni ombra delle tuo fantasia.",
+  "chat_placeholder": "Scrivi un messaggio...",
+  "desireFlower": {
+    "title": "Le 7 dimensioni del tuo desiderio",
+    "tempTitle": "Qual è la tua temperatura?",
+    "payoff": "Sarò il tuo {{ruolo}} {{tono}}, {{linguaggio}}, {{guida}}, giocheremo nel regno della {{regno}}. Ma posso diventare ciò che vuoi. Decidi tu scegliendo sotto le 7 dimensioni del tuo desiderio!",
+    "circles": [
+      { "caption": "Il mio ruolo", "slogan": "Quanto vuoi che io sia per te?", "min": "Confidente", "max": "Amante", "emojiMin": "🤝", "emojiMax": "💋" },
+      { "caption": "Tono", "slogan": "Che tipo di energia desideri?", "min": "Tenero", "max": "Autoritario", "emojiMin": "🕊️", "emojiMax": "🔥" },
+      { "caption": "Linguaggio", "slogan": "Come vuoi che ti parli?", "min": "Poetico", "max": "Crudo", "emojiMin": "🌸", "emojiMax": "😈" },
+      { "caption": "Intensità", "slogan": "Fin dove vuoi spingerti adesso?", "min": "Sottile", "max": "Esplicito", "emojiMin": "💫", "emojiMax": "💣" },
+      { "caption": "Stimolazione", "slogan": "Vuoi essere più sorpresa o rassicurata?", "min": "Rassicurante", "max": "Imprevedibile", "emojiMin": "🌿", "emojiMax": "🎭" },
+      { "caption": "Iniziativa", "slogan": "Vuoi guidare o lasciarti guidare?", "min": "Guido io", "max": "Voglio essere presa", "emojiMin": "💃", "emojiMax": "🕴️" },
+      { "caption": "Realtà o fantasia", "slogan": "In che universo vuoi giocare?", "min": "Reale", "max": "Fantastico", "emojiMin": "🌍", "emojiMax": "��‍♀️" }
+    ],
+    "values": {
+      "amante": "amante",
+      "confidente": "confidente",
+      "severo": "severo",
+      "tenero": "tenero",
+      "con un linguaggio forte": "con un linguaggio forte",
+      "poetico": "poetico",
+      "dovrai obbedire": "dovrai obbedire",
+      "mi guiderai tu": "mi guiderai tu",
+      "fantasia": "fantasia",
+      "realtà": "realtà"
+    }
+  }
+}

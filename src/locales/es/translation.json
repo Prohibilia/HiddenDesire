@@ -1,0 +1,36 @@
+{
+  "title": "Deseo",
+  "title2": "Oculto",
+    "payoff": "¿Qué se esconde detrás de tu puerta secreta?",
+  "disclaimer": "© 2025 Todos los derechos reservados.",
+  "chat": "Chat",
+  "chat_welcome_title": "Bienvenida...",
+  "chat_welcome_body": "Esta es una conversación solo entre tú y yo, en un espacio secreto y protegido. Aquí puedes hablar de todo, sin miedos: no juzgo, estoy listo para escuchar cada matiz de tu deseo y cada sombra de tu fantasía.",
+  "chat_placeholder": "Escribe un mensaje...",
+  "desireFlower": {
+    "title": "Las 7 dimensiones de tu deseo.",
+    "tempTitle": "¿Cuál es tu temperatura?",
+    "payoff": "Seré tu {{ruolo}} {{tono}}, {{linguaggio}}, {{guida}}, jugaremos en el reino de la {{regno}}. Pero puedo convertirme en lo que quieras. ¡Decide tú eligiendo abajo las 7 dimensiones de tu deseo!",
+    "circles": [
+      { "caption": "Mi rol", "slogan": "¿Cuánto quieres que sea para ti?", "min": "Confidente", "max": "Amante", "emojiMin": "🤝", "emojiMax": "💋" },
+      { "caption": "Tono", "slogan": "¿Qué tipo de energía deseas?", "min": "Tierno", "max": "Autoritario", "emojiMin": "🕊️", "emojiMax": "🔥" },
+      { "caption": "Lenguaje", "slogan": "¿Cómo quieres que te hable?", "min": "Poético", "max": "Crudo", "emojiMin": "🌸", "emojiMax": "😈" },
+      { "caption": "Intensidad", "slogan": "¿Hasta dónde quieres llegar ahora?", "min": "Sutil", "max": "Explícito", "emojiMin": "💫", "emojiMax": "💣" },
+      { "caption": "Estimulación", "slogan": "¿Prefieres ser sorprendida o tranquilizada?", "min": "Tranquilizante", "max": "Imprevisible", "emojiMin": "🌿", "emojiMax": "🎭" },
+      { "caption": "Iniciativa", "slogan": "¿Quieres guiar o dejarte guiar?", "min": "Guío yo", "max": "Quiero ser tomada", "emojiMin": "💃", "emojiMax": "🕴️" },
+      { "caption": "Realidad o fantasía", "slogan": "¿En qué universo quieres jugar?", "min": "Real", "max": "Fantástico", "emojiMin": "🌍", "emojiMax": "��‍♀️" }
+    ],
+    "values": {
+      "amante": "amante",
+      "confidente": "confidente",
+      "severo": "severo",
+      "tenero": "tierno",
+      "con un linguaggio forte": "con un lenguaje fuerte",
+      "poetico": "poético",
+      "dovrai obbedire": "deberás obedecer",
+      "mi guiderai tu": "me guiarás tú",
+      "fantasia": "fantasía",
+      "realtà": "realidad"
+    }
+  }
+}

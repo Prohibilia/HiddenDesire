@@ -1,0 +1,55 @@
+.desire-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+  background: none;
+  box-shadow: none;
+  padding: 0.7rem 0 0.7rem 0;
+  gap: 0.7rem;
+  justify-content: center;
+}
+.desire-selector-slogan {
+  color: #d4af37;
+  font-family: 'Cinzel', serif;
+  font-size: 1.12rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.desire-selector-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 110%;
+  color: #d4af37;
+  font-size: 1.02rem;
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.3rem;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.desire-selector-slider {
+  width: 100%;
+  accent-color: #e63946;
+  height: 4px;
+  border-radius: 2px;
+  background: #222;
+  outline: none;
+  margin: 0;
+}
+.desire-selector-bar-row {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.desire-selector-icon {
+  position: absolute;
+  top: 8px;
+  font-size: 1.25rem;
+  pointer-events: none;
+  transition: opacity 0.3s, filter 0.3s;
+  z-index: 2;
+} 
