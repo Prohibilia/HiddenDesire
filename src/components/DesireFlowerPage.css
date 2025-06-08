@@ -9,7 +9,7 @@
   right: 0;
   bottom: 0;
   width: 100vw;
-  background: rgba(24, 19, 19, 0.98);
+  background: rgba(24, 19, 19, 0.85) !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,4 +94,34 @@
   padding: 1.1rem 2rem;
   text-shadow: 0 0 8px #e6c97a33, 0 2px 8px #000;
   display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .desire-flower-page-outer {
+    padding-top: 1.2rem !important;
+  }
+  .desire-flower-page-header {
+    max-width: 98vw !important;
+    padding: 0 0.5rem 0.5rem 0.5rem !important;
+  }
+  .desire-flower-page-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .desire-flower-page-close {
+    font-size: 1.3rem !important;
+    right: 0.2rem !important;
+    top: 0.1rem !important;
+    padding: 0.1em 0.3em !important;
+  }
+  .desire-flower-page-content {
+    max-width: 99vw !important;
+    padding: 0 !important;
+  }
+  .desire-flower-sintesi-elegant {
+    font-size: 0.95rem !important;
+    padding: 0.5rem 0.7rem !important;
+    margin: 0.1rem auto 1rem auto !important;
+    max-width: 98vw !important;
+  }
 } 
