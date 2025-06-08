@@ -4,4 +4,21 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+body {
+  background: #181313 url('/images/WallPaper.png') repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.desire-flower-page-outer,
+.chat-outer-panel,
+.album-outer {
+  background: rgba(24, 19, 19, 0.85) !important;
+  /* Mantiene contrasto ma lascia vedere il wallpaper */
+}
+
+.app-root {
+  background: transparent !important;
 } 
