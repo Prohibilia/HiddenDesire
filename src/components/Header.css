@@ -305,4 +305,28 @@
     font-size: 1.3rem !important;
     margin-right: 0.5rem !important;
   }
+}
+
+.parla-btn, .refined-parla-btn {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.45rem;
+  color: #ffe08a;
+  background: none;
+  border: 2px solid #ffe08a;
+  border-radius: 14px;
+  padding: 0.25em 1.5em;
+  margin-left: 1.1rem;
+  margin-right: 1.1rem;
+  box-shadow: 0 0 12px #ffe08a55;
+  text-shadow: 0 0 8px #ffe08a99, 0 2px 8px #000;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.parla-btn:hover, .refined-parla-btn:hover {
+  background: #ffe08a22;
+  color: #fffbe6;
+  box-shadow: 0 0 18px #ffe08a99;
 } 

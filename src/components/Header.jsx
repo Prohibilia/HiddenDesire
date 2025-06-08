@@ -9,7 +9,7 @@ const LANGS = [
   { code: 'pt', label: 'PT' },
 ];
 
-export default function Header({ onAlbumClick, onQuestionnaireClick, onOpenDesireFlower }) {
+export default function Header({ onAlbumClick, onQuestionnaireClick, onOpenDesireFlower, onOpenChat }) {
   const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,10 +19,11 @@ export default function Header({ onAlbumClick, onQuestionnaireClick, onOpenDesir
         <button className="burger-btn refined-burger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span className="burger-icon">&#9776;</span>
         </button>
+        <button className="parla-btn refined-parla-btn" onClick={onOpenChat}>Parla con me!</button>
         <div className="header-title refined-title">
-          <span className="header-title-left refined-title-part">{t('title')}</span>
-          <img src="/images/logo.PNG" alt="logo" className="header-logo refined-logo" />
-          <span className="header-title-right refined-title-part">{t('title2')}</span>
+          <span className="header-title-left refined-title-part">Deseo</span>
+          <img src="/images/logo.png" alt="logo" className="header-logo refined-logo no-border" />
+          <span className="header-title-right refined-title-part">Oculto</span>
         </div>
         <div className="header-right">
           <button className="desire-flower-header-btn" onClick={onOpenDesireFlower}>

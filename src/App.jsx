@@ -14,6 +14,7 @@ function App() {
   const [showAlbum, setShowAlbum] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [showDesireFlowerPage, setShowDesireFlowerPage] = useState(false);
+  const [previousPage, setPreviousPage] = useState(null);
   const [desireValues, setDesireValues] = useState(Array(7).fill(50));
 
   const handleUnlock = () => {
@@ -38,6 +39,10 @@ function App() {
   };
 
   const handleOpenDesireFlower = () => {
+    if (showChat) setPreviousPage('chat');
+    else if (showAlbum) setPreviousPage('album');
+    else if (showQuestionnaire) setPreviousPage('questionnaire');
+    else if (showSplash) setPreviousPage('splash');
     setShowDesireFlowerPage(true);
     setShowAlbum(false);
     setShowSplash(false);
@@ -45,11 +50,28 @@ function App() {
     setShowQuestionnaire(false);
   };
 
+  const handleCloseDesireFlower = () => {
+    setShowDesireFlowerPage(false);
+    if (previousPage === 'chat') setShowChat(true);
+    else if (previousPage === 'album') setShowAlbum(true);
+    else if (previousPage === 'questionnaire') setShowQuestionnaire(true);
+    else if (previousPage === 'splash') setShowSplash(true);
+    setPreviousPage(null);
+  };
+
+  const handleOpenChat = () => {
+    setShowChat(true);
+    setShowAlbum(false);
+    setShowSplash(false);
+    setShowQuestionnaire(false);
+    setShowDesireFlowerPage(false);
+  };
+
   return (
     <DesireProvider>
       <div className="app-root">
-        <Header onAlbumClick={handleAlbumClick} onQuestionnaireClick={handleQuestionnaireClick} onOpenDesireFlower={handleOpenDesireFlower} />
-        {showDesireFlowerPage && <DesireFlowerPage onClose={() => setShowDesireFlowerPage(false)} />}
+        <Header onAlbumClick={handleAlbumClick} onQuestionnaireClick={handleQuestionnaireClick} onOpenDesireFlower={handleOpenDesireFlower} onOpenChat={handleOpenChat} />
+        {showDesireFlowerPage && <DesireFlowerPage onClose={handleCloseDesireFlower} />}
         {showQuestionnaire && !showDesireFlowerPage && <Questionnaire />}
         {showAlbum && !showDesireFlowerPage && <PhotoAlbum />}
         {!showAlbum && !showQuestionnaire && !showDesireFlowerPage && showSplash && <SplashPage onUnlock={handleUnlock} />}
