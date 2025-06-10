@@ -112,15 +112,12 @@ body {
 .chat-outer-panel {
   width: 100%;
   max-width: 900px;
-  margin-top: 3.5rem !important;
-  padding-top: 2.5rem !important;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 7rem auto 0 auto;
+  padding: 2rem 30px 30px 30px;
   background: #2a2417;
   border-radius: 24px;
   border: 1.5px solid #d4af37;
   box-shadow: 0 8px 36px #000a;
-  padding: 2.5rem 30px 30px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -269,8 +266,41 @@ body {
   padding-bottom: 0.5rem;
 }
 .header-root {
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
+  margin-top: 24px;
+}
+.desire-flower-sintesi-elegant {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #ffe7a1;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  background: rgba(24, 19, 19, 0.98);
+  border-radius: 12px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 2px 12px #000a;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 6px #e6c97a33, 0 2px 6px #000;
+}
+.desire-flower-sintesi-wallpaper {
+  margin: 0 auto 2.2rem auto;
+  text-align: center;
+  font-size: 1.45rem;
+  color: #ffe08a;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  text-shadow: 0 0 18px #e6c97a99, 0 2px 18px #000;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 1.2rem 0 0.7rem 0;
+  max-width: 900px;
+  letter-spacing: 0.01em;
+}
+.chat-messages > .chat-msg:first-child {
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 600px) {

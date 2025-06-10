@@ -1,12 +1,4 @@
 {
-  "title": "Desiderio",
-  "title2": "Occulto",
-  "payoff": "Cosa si cela dietro la tua porta segreta?",
-  "disclaimer": "© 2025 Tutti i diritti riservati. Proprietà riservata.",
-  "chat": "Chat",
-  "chat_welcome_title": "Benvenuta...",
-  "chat_welcome_body": "Questa è una conversazione solo tra te e me, in uno spazio segreto e protetto. Qui puoi parlare di tutto, senza paure: io non giudico, sono pronto ad ascoltare ogni sfumatura del tuo desiderio e ogni ombra delle tuo fantasia.",
-  "chat_placeholder": "Scrivi un messaggio...",
   "role": {
     "caption": "Il mio ruolo",
     "explain": "Come vuoi che io sia per te?",
@@ -98,10 +90,5 @@
     "1": { "label": "Scenico", "desc": "sei tu… ma un po' nascosta." },
     "2": { "label": "Fantasy", "desc": "entriamo in un mondo parallelo." },
     "3": { "label": "Surreale", "desc": "tutto è possibile, senza limiti." }
-  },
-  "sintesi": "Sarò il tuo {{ruolo}} {{tono}}, {{linguaggio}}, {{guida}}, giocheremo nel regno della {{regno}}.",
-  "header": "Desiderio Occulto",
-  "parla_con_me": "Parla con me",
-  "sette_dimensioni": "LE 7 dimensioni del tuo desiderio",
-  "confidati_con_me": "Confidati con me in segreto"
-}
+  }
+} 

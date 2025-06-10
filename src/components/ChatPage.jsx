@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './ChatPage.css';
 import { useTranslation } from 'react-i18next';
-import DesireFlowerPage from './DesireFlowerPage';
 import { useDesire } from './DesireContext';
 
 const initialMessages = [
@@ -50,8 +49,7 @@ export default function ChatPage() {
   const [input, setInput] = useState('');
   const chatEndRef = useRef(null);
   const { t } = useTranslation();
-  const [showDesireFlowerPage, setShowDesireFlowerPage] = useState(false);
-  const { desireValues, setDesireValues, sintesi } = useDesire();
+  const { sintesi } = useDesire();
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -72,44 +70,43 @@ export default function ChatPage() {
     setInput('');
   };
 
-  if (showDesireFlowerPage) {
-    return <DesireFlowerPage onClose={() => setShowDesireFlowerPage(false)} />;
-  }
   return (
-    <div className="chat-outer chat-outer-panel" style={{paddingTop: 0, marginTop: 0}}>
-      <div className="desire-flower-sintesi desire-flower-sintesi-elegant" style={{marginBottom: '2.2rem'}}>{sintesi}</div>
-      <div className="chat-inner-panel">
-        <div className="chat-messages">
-          {messages.map((msg) => (
-            <div key={msg.id} className={`chat-msg chat-msg-${msg.sender}`}>
-              <div className="chat-bubble">
-                <div className="avatar-container">
-                  <img src={msg.sender === 'system' ? '/images/masculineMask.png' : '/images/feminineMask.png'} alt="mask" className="chat-avatar-inside" />
+    <>
+      <div className="desire-flower-sintesi desire-flower-sintesi-elegant desire-flower-sintesi-wallpaper">{sintesi}</div>
+      <div className="chat-outer chat-outer-panel" style={{paddingTop: 0, marginTop: 0}}>
+        <div className="chat-inner-panel">
+          <div className="chat-messages">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`chat-msg chat-msg-${msg.sender}`}>
+                <div className="chat-bubble">
+                  <div className="avatar-container">
+                    <img src={msg.sender === 'system' ? '/images/masculineMask.png' : '/images/feminineMask.png'} alt="mask" className="chat-avatar-inside" />
+                  </div>
+                  <span className="chat-text">{msg.text}</span>
                 </div>
-                <span className="chat-text">{msg.text}</span>
               </div>
-            </div>
-          ))}
-          <div ref={chatEndRef} />
-        </div>
-        <form className="chat-input-row" onSubmit={handleSend} autoComplete="off">
-          <div className="chat-input-bubble">
-            <div className="avatar-container">
-              <img src="/images/feminineMask.png" alt="maschera femminile" className="chat-avatar-inside" />
-            </div>
-            <input
-              className="chat-input"
-              type="text"
-              placeholder={t('chat_placeholder')}
-              value={input}
-              onChange={e => setInput(e.target.value)}
-            />
-            <button type="submit" className="chat-send-btn" aria-label="Invia">
-              <img src="/images/envelope.png" alt="invia" className="chat-send-icon" />
-            </button>
+            ))}
+            <div ref={chatEndRef} />
           </div>
-        </form>
+          <form className="chat-input-row" onSubmit={handleSend} autoComplete="off">
+            <div className="chat-input-bubble">
+              <div className="avatar-container">
+                <img src="/images/feminineMask.png" alt="maschera femminile" className="chat-avatar-inside" />
+              </div>
+              <input
+                className="chat-input"
+                type="text"
+                placeholder={t('chat_placeholder')}
+                value={input}
+                onChange={e => setInput(e.target.value)}
+              />
+              <button type="submit" className="chat-send-btn" aria-label="Invia">
+                <img src="/images/envelope.png" alt="invia" className="chat-send-icon" />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 } 
