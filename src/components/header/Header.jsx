@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const LockIcon = () => (
-  <img src="/images/lucchetto.svg" alt="Lock" className="refined-logo" style={{height:'2.5rem', background:'#181313', borderRadius:'12px', border:'2px solid #d4af37', padding:'0.2rem'}} />
+  <img src="/images/logo.png" alt="Lock" className="refined-logo" style={{height:'5rem', background:'none', borderRadius:0, border:'none', padding:0}} />
 );
 
 export default function Header({ isLoggedIn, username, onLoginClick, onLogout }) {
@@ -29,9 +29,9 @@ export default function Header({ isLoggedIn, username, onLoginClick, onLogout })
 
         {/* Titolo centrale raffinato */}
         <div className="refined-title" style={{position:'absolute', left:'50%', top:'50%', transform:'translate(-50%,-50%)', display:'flex', alignItems:'center', gap:'2.2rem'}}>
-          <span className="refined-title-part">Deseo</span>
+          <span className="refined-title-part">{t('title')}</span>
           <LockIcon />
-          <span className="refined-title-part">Oculto</span>
+          <span className="refined-title-part">{t('title2')}</span>
         </div>
 
         {/* Lingua, user/login, X a destra */}
@@ -110,12 +110,6 @@ export default function Header({ isLoggedIn, username, onLoginClick, onLogout })
             </button>
           </div>
         )}
-      </div>
-
-      {/* Fascia bottoni raffinata sotto header */}
-      <div style={{width:'100vw', background:'#5a2323', display:'flex', justifyContent:'center', alignItems:'center', padding:'2.2rem 0 1.2rem 0', gap:'2.5rem'}}>
-        <button className="elegant-button" style={{minWidth:'200px', fontSize:'1.2em'}} onClick={() => navigate('/chat')}>{t('conosciamoci', 'Conozcámonos')}</button>
-        <button className="elegant-button" style={{minWidth:'200px', fontSize:'1.2em'}} onClick={() => navigate('/dimensioni')}>{t('le_7_dimensioni', 'Las 7 dimensiones')}</button>
       </div>
     </>
   );

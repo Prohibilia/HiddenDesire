@@ -1,24 +1,28 @@
 .splash-root {
-  min-height: 100vh;
+  min-height: unset;
   /* background: #6b2323 url('/images/splash-bg.jpg') repeat; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   transition: opacity 0.9s cubic-bezier(.4,0,.2,1);
   opacity: 1;
   z-index: 2;
+  padding: 0;
+  margin: 0;
 }
 .splash-root.fade-out {
   opacity: 0;
   pointer-events: none;
 }
 .splash-center {
-  flex: 1;
+  flex: unset;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
 }
 .splash-img-wrap {
   position: relative;
@@ -58,17 +62,33 @@
   color: #ffd77a;
   text-align: center;
   max-width: 700px;
-  margin: 2.2rem auto 1.1rem auto;
+  margin: 0;
   font-style: italic;
   text-shadow: 0 0 12px #ffd77a55, 0 2px 8px #000;
+}
+.splash-enter-btn {
+  display: block;
+  margin: 0 auto 0 auto;
+  padding: 0.7rem 2.5rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: #E6C155;
+  background: rgba(24,19,19,0.98);
+  border: 2.5px solid #E6C155;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px #000a;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 8px #e6c97a55, 0 2px 8px #000;
 }
 @media (max-width: 600px) {
   .splash-slogan {
     font-size: 1.05rem;
-    margin-top: 1.2rem;
-    margin-bottom: 0.7rem;
+    margin: 0;
   }
   .splash-img-wrap {
-    margin-top: 0.7rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 } 

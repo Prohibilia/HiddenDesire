@@ -18,14 +18,15 @@ const DesireContext = createContext();
 export function DesireProvider({ children, userId }) {
   const { t } = useTranslation();
   const [desireValues, setDesireValues] = useState(DEFAULT_VALUES);
+  const [settingIndex, setSettingIndex] = useState(1); // default 1, può essere gestito meglio
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const sintesi = useMemo(() => synthesizeDesire(desireValues, t), [desireValues, t]);
 
-  // Carica le dimensioni da dimensions7 se l'utente è loggato
+  // Carica le dimensioni da dimensions7 se l'utente è loggato e c'è un settingIndex
   useEffect(() => {
-    if (!userId) return;
-    getUserDimensions7(userId)
+    if (!userId || !settingIndex) return;
+    getUserDimensions7(userId, settingIndex)
       .then(({ data, error }) => {
         if (error) {
           console.error('Error loading dimensions:', error);
@@ -51,12 +52,12 @@ export function DesireProvider({ children, userId }) {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [userId]);
+  }, [userId, settingIndex]);
 
   // Salva le dimensioni su dimensions7 ogni volta che cambiano
   useEffect(() => {
-    if (!userId) return;
-    upsertUserDimensions(userId, desireValues)
+    if (!userId || !settingIndex) return;
+    upsertUserDimensions(userId, settingIndex, desireValues)
       .then(({ error }) => {
         if (error) {
           console.error('Error saving dimensions:', error);
@@ -69,14 +70,16 @@ export function DesireProvider({ children, userId }) {
         console.error('Error in dimension saving:', err);
         setError(err.message);
       });
-  }, [userId, desireValues]);
+  }, [userId, settingIndex, desireValues]);
 
   const value = {
     desireValues,
     setDesireValues,
     sintesi,
     isLoading,
-    error
+    error,
+    settingIndex,
+    setSettingIndex
   };
 
   return (

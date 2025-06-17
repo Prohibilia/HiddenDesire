@@ -93,6 +93,11 @@ export default function DesireCardPage({ onClose }) {
 
   return (
     <div className="desire-card-page-outer desire-card-bg-elegant">
+      <div style={{width:'100%', display:'flex', justifyContent:'center', marginTop:'1.2rem', marginBottom:'0.7rem'}}>
+        <button className="login-btn" style={{minWidth:'180px', fontSize:'1.1em'}} onClick={() => window.location.href='/chat'}>
+          Torna alla chat
+        </button>
+      </div>
       {/* Sintesi delle scelte sopra la card */}
       <div className="desire-sintesi-figure">{sintesi}</div>
       <div className="desire-card-page-content">
@@ -163,9 +168,6 @@ export default function DesireCardPage({ onClose }) {
           </div>
         </div>
       </div>
-      <button className="login-btn" onClick={() => setShowLogin(true)}>
-        Login
-      </button>
     </div>
   );
 } 

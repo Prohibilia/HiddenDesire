@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Header from './Header';
+import Header from '../Header';
 
 const ChatPage: React.FC = () => {
   const { t } = useTranslation();

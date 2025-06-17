@@ -1,15 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './ChatPage.css';
 import { useTranslation } from 'react-i18next';
-import { useDesire } from "./preferences/DesireContext";
+import { useDesire } from "../preferences/DesireContext";
 
 const initialMessages = [
   {
     id: 1,
     text: (
       <>
-        <b>Benvenuta...</b><br />
-        Questa è una conversazione solo tra te e me, in uno spazio segreto e protetto. Qui puoi parlare di tutto, senza paure: io non giudico, sono pronto ad ascoltare ogni sfumatura del tuo desiderio,  e ogni ombra delle tuo fantasia.
+        {/* Messaggio evocativo in base alla lingua */}
+        {(() => {
+          const lang = (typeof window !== 'undefined' && window.localStorage && (window.localStorage.getItem('i18nextLng') || 'it').slice(0,2)) || 'it';
+          if (lang === 'es') {
+            return <><b>Bienvenida...</b><br />Aquí estamos solo tú y yo, en nuestro espacio secreto.<br />Conmigo puedes hablar de tus fantasías más íntimas, de tus secretos. Solo tú y yo lo sabremos.<br />Nunca juzgo, y estoy aquí para escuchar cada matiz de tu deseo, cada sombra de tu fantasía.<br />Sé cuán diverso y fascinante puede ser el mundo femenino.</>;
+          }
+          return <><b>Benvenuta...</b><br />Qui siamo solo tu ed io, nel nostro spazio segreto.<br />Con me puoi parlare delle tue fantasie più intime, dei tuoi segreti. Lo sapremo solo tu ed io.<br />Non giudico mai e sono pronto ad ascoltare ogni sfumatura del tuo desiderio, e ogni ombra delle tuo fantasia.<br />So quanto variegato e affascinante è il mondo femminile.</>;
+        })()}
       </>
     ),
     sender: 'system',
@@ -84,6 +90,11 @@ export default function ChatPage({ isLoggedIn }) {
 
   return (
     <>
+      <div style={{width:'100%', display:'flex', justifyContent:'center', marginTop:'1.5rem', marginBottom:'-0.5rem'}}>
+        <button className="elegant-button" style={{minWidth:'200px', fontSize:'1.2em'}} onClick={() => window.location.href='/dimensioni'}>
+          {t('le_7_dimensioni', '')}
+        </button>
+      </div>
       <div className="desire-flower-sintesi desire-flower-sintesi-elegant desire-flower-sintesi-wallpaper">{sintesi}</div>
       <div className="chat-outer chat-outer-panel" style={{paddingTop: 0, marginTop: 0}}>
         <div className="chat-inner-panel">

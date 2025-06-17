@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Header from './components/Header';
-import SplashPage from './components/SplashPage';
-import ChatPage from './components/ChatPage';
+import Disclaimer from './components/disclaimer/Disclaimer';
+import Header from './components/header/Header';
+import SplashPage from './components/splash/SplashPage';
+import ChatPage from './components/chat/ChatPage';
 import PhotoAlbum from './components/PhotoAlbum';
 import Questionnaire from './components/Questionnaire';
 import DesireCardPage from './components/preferences/DesireCardPage';
 import { DesireProvider } from './components/preferences/DesireContext';
 import FirstVisitModal from './components/login/FirstVisitModal';
 import UnifiedLoginModal from './components/login/UnifiedLoginModal';
+import DisclaimerModal from './components/disclaimer/DisclaimerModal';
 import './App.css';
 
 function App() {
@@ -20,6 +22,12 @@ function App() {
   const [username, setUsername] = useState('');
   const [showWelcome, setShowWelcome] = useState(false);
   const [userId, setUserId] = useState('');
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [pendingChat, setPendingChat] = useState(false);
+
+  useEffect(() => {
+    console.log('[DEBUG] useEffect showDisclaimer:', showDisclaimer, '| pendingChat:', pendingChat, '| disclaimerAccepted:', sessionStorage.getItem('disclaimerAccepted'));
+  }, [showDisclaimer, pendingChat]);
 
   useEffect(() => {
     if (showWelcome) {
@@ -67,6 +75,12 @@ function App() {
     localStorage.removeItem('username');
   };
 
+  const handleDisclaimerDecline = () => {
+    // Qui puoi aggiungere la logica per gestire il rifiuto
+    // Per esempio, reindirizzare a una pagina di uscita
+    window.location.href = 'https://www.google.com';
+  };
+
   return (
     <DesireProvider userId={userId}>
       <FirstVisitModal
@@ -87,6 +101,22 @@ function App() {
           onLoginClick={() => setShowLogin(true)}
           onLogout={handleLogout}
         />
+        {showDisclaimer && (
+          <DisclaimerModal
+            isOpen={showDisclaimer}
+            onAccept={() => {
+              console.log('[DEBUG] Disclaimer ACCEPTED! pendingChat:', pendingChat);
+              setShowDisclaimer(false);
+              sessionStorage.setItem('disclaimerAccepted', 'true');
+              if (pendingChat) {
+                setPendingChat(false);
+                console.log('[DEBUG] Redirecting to /chat after disclaimer accept');
+                window.location.href = '/chat';
+              }
+            }}
+            onDecline={handleDisclaimerDecline}
+          />
+        )}
         {showWelcome && (
           <div style={{
             position: 'fixed',
@@ -119,7 +149,17 @@ function App() {
           </div>
         )}
         <Routes>
-          <Route path="/" element={<SplashPage onUnlock={() => window.location.href = '/chat'} />} />
+          <Route path="/" element={<SplashPage onUnlock={() => {
+            console.log('[DEBUG] onUnlock called, disclaimerAccepted:', sessionStorage.getItem('disclaimerAccepted'));
+            if (!sessionStorage.getItem('disclaimerAccepted')) {
+              setShowDisclaimer(true);
+              setPendingChat(true);
+              console.log('[DEBUG] Disclaimer needed, setShowDisclaimer(true), setPendingChat(true)');
+            } else {
+              console.log('[DEBUG] Disclaimer already accepted, redirecting to /chat');
+              window.location.href = '/chat';
+            }
+          }} />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/dimensioni" element={<DesireCardPage />} />
           <Route path="/album" element={<PhotoAlbum />} />
