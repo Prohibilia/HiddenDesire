@@ -1,0 +1,21 @@
+{
+  "benvenuto_nel_tuo_spazio_privato": "Bienvenido a tu espacio privado",
+  "benvenuto_nel_tuo_spazio_privato_desc": "Puedes continuar sin registro.",
+  "benvenuto_nel_tuo_spazio_privato_desc2": "Pero solo necesitas indicar un nombre de fantasía y una contraseña, y podrás retomar la conversación donde la dejaste.\n\nNo te pediremos ni correo electrónico, ni números de teléfono, ni datos de tarjeta de crédito.\n\n✨ Tu privacidad es nuestra prioridad absoluta.",
+  "iniziamo": "Empecemos",
+  "non_ora": "Ahora no",
+  "username": "Nombre",
+  "password": "Contraseña",
+  "conferma_password": "Confirmar contraseña",
+  "sicurezza_importante": "Tu privacidad es nuestra prioridad",
+  "sicurezza_tooltip": "No te pediremos ni correo electrónico, ni números de teléfono, ni datos de tarjeta de crédito",
+  "accedi": "Acceder",
+  "registrati": "Registrame",
+  "nuovo_account": "Nueva cuenta",
+  "ho_gia_account": "Tengo cuenta",
+  "sei_sicuro_di_voler_uscire": "¿Estás seguro de que quieres salir?",
+  "sei_sicuro_di_voler_uscire_desc": "¿La experiencia ha sido intrigante?\n¡Elige solo un nombre y una contraseña, y podrás retomar donde lo dejaste!",
+  "no_resta": "No, quedarse",
+  "si_esci": "Sí, salir",
+  "welcome_back": "Hola, me alegra verte de nuevo."
+} 

@@ -90,5 +90,6 @@
     "1": { "label": "Scenico", "desc": "sei tu… ma un po' nascosta." },
     "2": { "label": "Fantasy", "desc": "entriamo in un mondo parallelo." },
     "3": { "label": "Surreale", "desc": "tutto è possibile, senza limiti." }
-  }
+  },
+  "welcome_back": "Ciao, felice di rivederti."
 } 

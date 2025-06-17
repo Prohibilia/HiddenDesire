@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './ChatPage.css';
 import { useTranslation } from 'react-i18next';
-import { useDesire } from './DesireContext';
+import { useDesire } from "./preferences/DesireContext";
 
 const initialMessages = [
   {
@@ -44,20 +44,32 @@ function synthesizeDesire(values) {
   return frase;
 }
 
-export default function ChatPage() {
+export default function ChatPage({ isLoggedIn }) {
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState('');
+  const [showLogin, setShowLogin] = useState(() => !sessionStorage.getItem('guestId') && !isLoggedIn);
   const chatEndRef = useRef(null);
   const { t } = useTranslation();
   const { sintesi } = useDesire();
 
   useEffect(() => {
+    if (!localStorage.getItem('hasVisitedOnce')) {
+      localStorage.setItem('hasVisitedOnce', 'true');
+    }
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   const handleSend = (e) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || showLogin) return;
+    
+    // Invito alla registrazione secondo la nuova logica
+    if (sessionStorage.getItem('registrationPromptShown') !== 'true') {
+      setShowLogin(true);
+      sessionStorage.setItem('registrationPromptShown', 'true');
+      return;
+    }
+    
     setMessages([
       ...messages,
       {
@@ -99,14 +111,15 @@ export default function ChatPage() {
                 placeholder={t('chat_placeholder')}
                 value={input}
                 onChange={e => setInput(e.target.value)}
+                disabled={showLogin}
               />
-              <button type="submit" className="chat-send-btn" aria-label="Invia">
+              <button type="submit" className="chat-send-btn" aria-label="Invia" disabled={showLogin}>
                 <img src="/images/envelope.png" alt="invia" className="chat-send-icon" />
               </button>
             </div>
           </form>
         </div>
-      </div>
+    </div>
     </>
   );
 } 

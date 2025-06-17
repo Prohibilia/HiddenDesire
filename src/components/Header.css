@@ -386,4 +386,23 @@
   background: #ffe08a;
   color: #4b1818;
   box-shadow: 0 0 24px #ffe08a99;
+}
+
+.exit-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  transition: color 0.3s;
+}
+
+.exit-btn:hover {
+  color: #ff6b6b;
+}
+
+.exit-icon {
+  font-weight: bold;
 } 

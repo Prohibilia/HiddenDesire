@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDesire } from './DesireContext';
 import { useTranslation } from 'react-i18next';
 import './DesireCardPage.css';
+import UnifiedLoginModal from '../login/UnifiedLoginModal';
+// Se serve la modale motivazionale:
+// import FirstVisitModal from "../login/FirstVisitModal";
 
 // Funzione per calcolare la dimensione della fiamma
 function getFlameSize() {
@@ -17,6 +20,8 @@ export default function DesireCardPage({ onClose }) {
   const { desireValues, setDesireValues, sintesi } = useDesire();
   const [localValues, setLocalValues] = useState(desireValues);
   const [selected, setSelected] = useState(0);
+  const [showInvite, setShowInvite] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -51,6 +56,16 @@ export default function DesireCardPage({ onClose }) {
     newValues[selected] = Math.round((value / sliderMax) * 100);
     setLocalValues(newValues);
     setDesireValues(newValues);
+
+    // Invito alla registrazione secondo la nuova logica
+    if (sessionStorage.getItem('registrationPromptShown') !== 'true') {
+      setShowInvite(true);
+      sessionStorage.setItem('registrationPromptShown', 'true');
+      if (!localStorage.getItem('hasVisitedOnce')) {
+        localStorage.setItem('hasVisitedOnce', 'true');
+      }
+      return;
+    }
   };
 
   // Titoli card precedente e successiva
@@ -58,6 +73,23 @@ export default function DesireCardPage({ onClose }) {
   const nextTitle = selected < keys.length-1 ? safeT(t, `${keys[selected+1]}.caption`) : '';
 
   const flameSize = getFlameSize();
+
+  if (showInvite) {
+    return <ModalExitPrompt
+      open={showInvite}
+      registrationInvite={true}
+      onReturn={() => { setShowInvite(false); setShowLogin(true); }}
+      onClose={() => setShowInvite(false)}
+    />;
+  }
+  if (showLogin) {
+    return <UnifiedLoginModal
+      open={showLogin}
+      onClose={() => setShowLogin(false)}
+      onLogin={() => setShowLogin(false)}
+      onRegister={() => setShowLogin(false)}
+    />;
+  }
 
   return (
     <div className="desire-card-page-outer desire-card-bg-elegant">
@@ -131,6 +163,9 @@ export default function DesireCardPage({ onClose }) {
           </div>
         </div>
       </div>
+      <button className="login-btn" onClick={() => setShowLogin(true)}>
+        Login
+      </button>
     </div>
   );
 } 
