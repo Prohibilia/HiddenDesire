@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,600&display=swap');
+
+.elegant-login-card {
+  background: #2b140f;
+  padding: 2.1rem 2.1rem 1.2rem 2.1rem;
+  border-radius: 22px;
+  border: 2px solid #d4af37;
+  width: 100%;
+  max-width: 370px;
+  box-shadow: 0 6px 18px #000a;
+  font-family: 'Cormorant Garamond', serif;
+  color: #ffe7a0;
+  margin: 0 auto;
+  position: relative;
+}
+
+.elegant-tab-bar {
+  display: flex;
+  border: 2px solid #d4af37;
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 1.3rem;
+  margin-top: 0.2rem;
+  background: none;
+}
+.elegant-tab-bar button {
+  flex: 1;
+  padding: 0.7rem 0;
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  font-weight: 600;
+  font-size: 1.25rem;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 0;
+  transition: background 0.18s, color 0.18s;
+  outline: none;
+}
+.elegant-tab-bar button.active {
+  background: #d4af37;
+  color: #2b140f;
+  font-weight: 700;
+  border-radius: 0;
+}
+
+.elegant-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.elegant-input {
+  width: 100%;
+  padding: 0.7rem 1.1rem;
+  background: #181313;
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  color: #ffe7a0;
+  margin-bottom: 0.2rem;
+  font-family: inherit;
+  font-size: 1.13rem;
+  box-sizing: border-box;
+  transition: border 0.18s;
+}
+.elegant-input:focus {
+  border: 2.5px solid #ffd77a;
+  outline: none;
+}
+.elegant-forgot {
+  display: block;
+  font-size: 1.08rem;
+  color: #ffd77a;
+  font-style: italic;
+  margin-bottom: 0.7rem;
+  margin-top: 0.1rem;
+  text-decoration: none;
+  text-align: left;
+}
+.elegant-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.2rem;
+  gap: 1.2rem;
+}
+.elegant-gold-btn {
+  background: #d4af37;
+  color: #2b140f;
+  border: none;
+  padding: 0.6rem 2.1rem;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.18rem;
+  font-family: inherit;
+  transition: background 0.18s, color 0.18s;
+}
+.elegant-gold-btn:hover {
+  background: #ffe7a0;
+  color: #2b140f;
+}
+.elegant-ghost-btn {
+  background: none;
+  border: 2px solid #d4af37;
+  color: #ffd77a;
+  padding: 0.6rem 2.1rem;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.18rem;
+  font-family: inherit;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+.elegant-ghost-btn:hover {
+  background: #2b140f;
+  color: #ffe7a0;
+  border-color: #ffe7a0;
+}
+.elegant-login-svg-wrap {
+  width: 100%;
+  margin: 1.1rem 0 0.1rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+} 
