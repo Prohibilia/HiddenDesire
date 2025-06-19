@@ -21,6 +21,12 @@ export default function SplashPage({ onUnlock }) {
     }
   }, []);
 
+  useEffect(() => {
+    console.log('[SPLASH DEBUG] Lingua attiva:', i18n.language);
+    console.log('[SPLASH DEBUG] t(payoff):', t('payoff'));
+    console.log('[SPLASH DEBUG] localStorage i18nextLng:', localStorage.getItem('i18nextLng'));
+  }, [i18n.language]);
+
   const handleUnlock = () => {
     setFade(true);
     setTimeout(() => {

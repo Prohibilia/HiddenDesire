@@ -108,6 +108,12 @@ export default function ChatPage({ isLoggedIn }) {
     });
   }, [i18n.language, t]);
 
+  useEffect(() => {
+    const lang = (typeof window !== 'undefined' && window.localStorage && (window.localStorage.getItem('i18nextLng') || 'it').slice(0,2)) || 'it';
+    console.log('[CHAT DEBUG] Lingua rilevata per messaggi iniziali:', lang);
+    console.log('[CHAT DEBUG] i18n.language:', (window.i18n && window.i18n.language) || 'undefined');
+  }, []);
+
   const handleSend = (e) => {
     e.preventDefault();
     if (!input.trim() || showLogin) return;

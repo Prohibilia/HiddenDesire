@@ -21,6 +21,8 @@ const resources = {
   }
 };
 
+console.log('[I18N DEBUG] Lingua iniziale:', i18n.language);
+console.log('[I18N DEBUG] Risorse caricate:', Object.keys(resources));
 i18n
   .use(initReactI18next)
   .init({
@@ -30,7 +32,12 @@ i18n
     detection: { caches: [] },
     interpolation: {
       escapeValue: false
-    }
+    },
+    initImmediate: false,
+    debug: true,
+  }).then(() => {
+    console.log('[I18N DEBUG] Lingua dopo init:', i18n.language);
+    console.log('[I18N DEBUG] Bundle attivo:', i18n.getResourceBundle(i18n.language, 'translation'));
   });
 
 export default i18n;

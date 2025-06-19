@@ -35,6 +35,13 @@ function App() {
     }
   }, [showWelcome, i18n.language]);
 
+  useEffect(() => {
+    console.log('[APP DEBUG] Lingua attiva i18n:', i18n.language);
+    console.log('[APP DEBUG] t(welcome_back):', t('welcome_back'));
+    console.log('[APP DEBUG] Risorse disponibili:', i18n.options.resources);
+    console.log('[APP DEBUG] localStorage i18nextLng:', localStorage.getItem('i18nextLng'));
+  }, [i18n.language]);
+
   const handleFirstVisitRegister = () => {
     setShowFirstVisit(false);
     setShowLogin(true);

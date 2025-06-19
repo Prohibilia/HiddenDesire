@@ -38,7 +38,9 @@ const Disclaimer = ({ onAccept, onDecline }) => {
   // }, [t]);
 
   useEffect(() => {
-    console.log('Lingua attiva (useEffect):', i18n.language);
+    console.log('[DISCLAIMER DEBUG] Lingua attiva (useEffect):', i18n.language);
+    console.log('[DISCLAIMER DEBUG] Bundle:', i18n.getResourceBundle(i18n.language, 'translation'));
+    console.log('[DISCLAIMER DEBUG] localStorage i18nextLng:', localStorage.getItem('i18nextLng'));
   }, [lang]);
 
   const checkScroll = () => {
