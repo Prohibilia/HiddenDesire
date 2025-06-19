@@ -278,14 +278,15 @@
 
 @media (max-width: 600px) {
   .disclaimer-container {
-    max-width: 96vw;
-    width: 96vw;
-    padding: 1rem 0.5rem;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    word-break: break-word;
   }
   .disclaimer-content {
-    max-height: 55vh;
-    overflow-y: auto;
+    word-break: break-word;
+    overflow-x: hidden;
   }
   .disclaimer-title {
     font-size: 1.5rem;

@@ -8,7 +8,7 @@
   transition: opacity 0.9s cubic-bezier(.4,0,.2,1);
   opacity: 1;
   z-index: 2;
-  padding: 0;
+  padding: 104px 0 0 0;
   margin: 0;
 }
 .splash-root.fade-out {
@@ -34,20 +34,29 @@
   cursor: pointer;
 }
 .splash-img {
-  max-width: 340px;
-  width: 90vw;
-  border: 3px solid #d4af37;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px #000a;
   display: block;
+  width: calc(100vw - 80px);
+  max-width: 660px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: auto;
+  box-sizing: border-box;
+  background: transparent;
+  mix-blend-mode: normal;
+  box-shadow: 0 8px 32px #000a;
 }
 .splash-payoff {
   margin-top: 2.2rem;
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   color: #d4af37;
   text-align: center;
   text-shadow: 0 2px 8px #000a;
+  font-variant: normal !important;
+  font-style: normal !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "case" 0;
+  font-feature-settings: "case" 0;
 }
 .splash-disclaimer {
   font-size: 0.95rem;
@@ -58,24 +67,26 @@
 }
 .splash-slogan {
   font-family: 'Playfair Display', serif;
-  font-size: 1.375rem;
+  font-size: 0.93rem !important;
+  font-weight: 400;
   color: #ffd77a;
   text-align: center;
   max-width: 700px;
-  margin: 0;
   font-style: italic;
   text-shadow: 0 0 12px #ffd77a55, 0 2px 8px #000;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .splash-enter-btn {
   display: block;
   margin: 0 auto 0 auto;
-  padding: 0.7rem 2.5rem;
+  padding: 0.13rem 0.7rem;
   font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
+  font-size: 0.85rem;
   color: #E6C155;
   background: rgba(24,19,19,0.98);
-  border: 2.5px solid #E6C155;
-  border-radius: 18px;
+  border: 1px solid #E6C155;
+  border-radius: 7px;
   box-shadow: 0 2px 12px #000a;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
@@ -90,5 +101,10 @@
   .splash-img-wrap {
     margin-top: 0;
     margin-bottom: 0;
+  }
+}
+@media (min-width: 601px) {
+  .splash-slogan {
+    font-size: 1.05rem !important;
   }
 } 

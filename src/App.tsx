@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import SplashPage from './components/SplashPage';
+import SplashPage from './components/splash/SplashPage';
 import ChatPage from './components/chat/ChatPage';
 
 function App() {

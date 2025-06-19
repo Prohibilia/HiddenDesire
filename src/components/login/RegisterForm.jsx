@@ -12,7 +12,7 @@ const SECURITY_QUESTIONS = [
   'domanda_insegnante',
 ];
 
-export default function RegisterForm({ onRegister }) {
+export default function RegisterForm({ onRegister, hideSubmitBtn }) {
   const { t, i18n } = useTranslation();
   const [form, setForm] = useState({
     username: '',
@@ -241,9 +241,11 @@ export default function RegisterForm({ onRegister }) {
           autoComplete="off"
         />
         {error && !error.includes('duplicate key value') && <div className="login-error">{error}</div>}
-        <button type="submit" className="login-btn" disabled={loading}>
-          {t('registrati')}
-        </button>
+        {!hideSubmitBtn && (
+          <button type="submit" className="login-btn" disabled={loading}>
+            {t('registrati')}
+          </button>
+        )}
         {loading && (
           <div style={{textAlign:'center', marginTop:'1em'}}>
             <div className="simple-spinner" style={{margin:'0 auto'}}></div>

@@ -12,7 +12,7 @@
 }
 
 .disclaimer-modal {
-  width: 98vw;
+  width: 96vw;
   max-width: 420px;
   max-height: 96vh;
   margin: 0;
@@ -27,8 +27,11 @@
 
 @media (max-width: 600px) {
   .disclaimer-modal {
+    width: 98vw;
     max-width: 98vw;
     min-width: 0;
     border-radius: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 } 

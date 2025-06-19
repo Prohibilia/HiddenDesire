@@ -4,7 +4,7 @@ import PasswordRecoveryInline from './PasswordRecoveryInline';
 import './login.css';
 import { loginUser } from '../../supaBase/supabaseAuth';
 
-export default function LoginForm({ onLogin, open }) {
+export default function LoginForm({ onLogin, open, hideSubmitBtn }) {
   const { t } = useTranslation();
   const [form, setForm] = useState({ username: '', password: '' });
   const [showRecovery, setShowRecovery] = useState(false);
@@ -67,9 +67,11 @@ export default function LoginForm({ onLogin, open }) {
           <PasswordRecoveryInline username={form.username} onClose={() => setShowRecovery(false)} />
         )}
       </div>
-      <button type="submit" className="login-btn" disabled={showRecovery} style={{ borderTop: 'none' }}>
-        {t('accedi')}
-      </button>
+      {!hideSubmitBtn && (
+        <button type="submit" className="login-btn" disabled={showRecovery} style={{ borderTop: 'none' }}>
+          {t('accedi')}
+        </button>
+      )}
       {error && <div className="login-error">{error}</div>}
     </form>
   );

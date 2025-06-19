@@ -20,18 +20,6 @@ const Disclaimer = ({ onAccept, onDecline }) => {
   const buttonsRowRef = useRef(null);
   const [lang, setLang] = useState(i18n.language || (navigator.language || 'es').slice(0, 2));
 
-  // Imposta la lingua di default su quella del browser
-  useEffect(() => {
-    const browserLang = (navigator.language || 'es').slice(0, 2);
-    if (['it', 'es'].includes(browserLang)) {
-      i18n.changeLanguage(browserLang);
-      setLang(browserLang);
-    } else {
-      i18n.changeLanguage('es');
-      setLang('es');
-    }
-  }, []);
-
   // Cambia lingua
   const handleLangChange = (code) => {
     console.log('Cambio lingua richiesto:', code);
@@ -42,12 +30,12 @@ const Disclaimer = ({ onAccept, onDecline }) => {
   };
 
   // Forza la lingua su 'it' per debug e logga le risorse
-  useEffect(() => {
-    i18n.changeLanguage('it');
-    console.log('Lingua attiva:', i18n.language);
-    console.log('Bundle:', i18n.getResourceBundle(i18n.language, 'translation'));
-    console.log('t(disclaimer.wantToProceed):', t('disclaimer.wantToProceed'));
-  }, [t]);
+  // useEffect(() => {
+  //   i18n.changeLanguage('it');
+  //   console.log('Lingua attiva:', i18n.language);
+  //   console.log('Bundle:', i18n.getResourceBundle(i18n.language, 'translation'));
+  //   console.log('t(disclaimer.wantToProceed):', t('disclaimer.wantToProceed'));
+  // }, [t]);
 
   useEffect(() => {
     console.log('Lingua attiva (useEffect):', i18n.language);

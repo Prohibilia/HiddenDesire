@@ -1,0 +1,32 @@
+.header-title-fixed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 10px auto 0 auto;
+  padding: 0;
+}
+
+.title-text-fixed {
+  font-family: 'Great Vibes', cursive;
+  font-size: 32px;
+  line-height: 1;
+  color: #ffd77a;
+  text-shadow: 0 0 8px #ffd77a99;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.header-logo-fixed {
+  height: 32px;
+  width: auto;
+  display: block;
+  vertical-align: middle;
+  margin: 0 2px;
+  padding: 0;
+} 
